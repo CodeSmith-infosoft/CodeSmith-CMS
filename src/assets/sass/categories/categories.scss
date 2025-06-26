@@ -1,0 +1,148 @@
+@import "../mixin";
+
+.categories {
+  table {
+    thead {
+      tr {
+        .th-font {
+          @include font(16px, 700);
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          @include font(16px, 500);
+          color: #777980;
+
+          h5 {
+            color: #000000;
+            @include font(16px, 500);
+          }
+        }
+      }
+    }
+  }
+}
+
+.custom-modal-dialog {
+  @media (min-width: 992px) {
+    .modal-lg,
+    .modal-xl {
+      --bs-modal-width: 640px !important;
+    }
+  }
+
+  .modal-body {
+    padding: 40px;
+
+    h2 {
+      @include font(32px, 700);
+    }
+
+    p {
+      padding-top: 30px;
+      @include font(18px, 700);
+      color: #777980;
+      padding-bottom: 13px;
+    }
+
+    input {
+      border: 1.31px solid #777980;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 18px 20px;
+      @include font(20px, 700);
+      color: #000000;
+      width: 100%;
+    }
+
+    .banner-button {
+      border: 1.31px solid #777980;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 18px 20px;
+      @include font(20px, 700);
+      color: #000000;
+      width: 100%;
+    }
+
+    .img-upload {
+      input {
+        border: 1.31px dotted #777980;
+        height: 217px;
+      }
+    }
+
+    .btn-common {
+      padding-top: 50px;
+      display: flex;
+      justify-content: center;
+
+      button {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.btn-common {
+  @include font(20px, 400);
+
+  button {
+    padding: 15px 30px;
+    border-radius: 5px;
+  }
+
+  .btn-cencal {
+    border: 1px solid #e31e24;
+    background-color: transparent;
+    color: #e31e24;
+  }
+
+  .btn-add {
+    color: #ffffff;
+    background: #e31e24;
+  }
+}
+
+.red-toggle .form-check-input:checked::before {
+  display: none;
+}
+
+.red-toggle .form-check-input {
+  // width: 3rem;
+  height: 1.3rem;
+  background-color: #ccc;
+  border: none;
+  position: relative;
+
+  // .input {
+  width: 35px !important;
+  // }
+
+  &:checked {
+    background-color: #e53935;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 2px;
+    left: 2px;
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:checked::before {
+    transform: translateX(1.2rem);
+  }
+}

@@ -1,0 +1,114 @@
+// MarketplaceManager.scss
+.marketplace-manager {
+  padding: 2rem;
+  min-height: 100vh;
+
+  .marketplace-card {
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background: white;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+  }
+
+  .logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+
+    img {
+      height: 80px;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .url-section {
+    box-shadow: 0px 1px 4px 0px #15223214;
+    padding-block: 20px;
+    padding-inline: 10px;
+    .url-text {
+      font-size: 0.85rem;
+      color: #6c757d;
+      word-break: break-all;
+    }
+  }
+
+  .button-section {
+    .edit-btn {
+      background-color: #EFF3FF;
+      border-color: #dc3545;
+      color: #dc3545;
+      font-weight: 500;
+      
+      &:hover {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+      }
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      font-weight: 500;
+      
+      &:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .marketplace-manager {
+    padding: 1rem;
+    
+    .marketplace-card {
+      margin-bottom: 1rem;
+    }
+    
+    .logo-container {
+      &.gem-logo {
+        flex-direction: column;
+        gap: 8px;
+        
+        .gem-text {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .marketplace-manager {
+    .button-section {
+      .d-flex {
+        flex-direction: column;
+        gap: 0.5rem !important;
+      }
+    }
+  }
+}

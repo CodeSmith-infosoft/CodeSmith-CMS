@@ -1,0 +1,368 @@
+.confirmation-modal {
+  .modal-content {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  &__header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #dee2e6;
+    padding: 1.25rem 1.5rem;
+
+    .btn-close {
+      padding: 0.5rem;
+      margin: -0.5rem -0.5rem -0.5rem auto;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #343a40;
+    margin: 0;
+  }
+
+  &__icon {
+    font-size: 1.25rem;
+
+    &--danger {
+      color: #dc3545;
+    }
+
+    &--warning {
+      color: #fd7e14;
+    }
+
+    &--info {
+      color: #0dcaf0;
+    }
+
+    &--success {
+      color: #198754;
+    }
+
+    &--primary {
+      color: #0d6efd;
+    }
+  }
+
+  &__body {
+    padding: 2rem 1.5rem !important;
+    text-align: center;
+
+    .upload-csv-btn {
+      border: 1px solid #008000;
+      width: 273px;
+      height: 86px;
+      gap: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 20px;
+      color: #008000;
+      border-radius: 5px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: inherit;
+      animation: pulse 2s infinite;
+    }
+  }
+
+  &__large-icon {
+    font-size: 2.5rem;
+    z-index: 1;
+
+    &--danger {
+      color: #dc3545;
+
+      & ~ .confirmation-modal__icon-wrapper {
+        background: rgba(220, 53, 69, 0.1);
+
+        &::before {
+          background: rgba(220, 53, 69, 0.1);
+        }
+      }
+    }
+
+    &--warning {
+      color: #fd7e14;
+
+      & ~ .confirmation-modal__icon-wrapper {
+        background: rgba(253, 126, 20, 0.1);
+
+        &::before {
+          background: rgba(253, 126, 20, 0.1);
+        }
+      }
+    }
+
+    &--info {
+      color: #0dcaf0;
+
+      & ~ .confirmation-modal__icon-wrapper {
+        background: rgba(13, 202, 240, 0.1);
+
+        &::before {
+          background: rgba(13, 202, 240, 0.1);
+        }
+      }
+    }
+
+    &--success {
+      color: #198754;
+
+      & ~ .confirmation-modal__icon-wrapper {
+        background: rgba(25, 135, 84, 0.1);
+
+        &::before {
+          background: rgba(25, 135, 84, 0.1);
+        }
+      }
+    }
+
+    &--primary {
+      color: #0d6efd;
+
+      & ~ .confirmation-modal__icon-wrapper {
+        background: rgba(13, 110, 253, 0.1);
+
+        &::before {
+          background: rgba(13, 110, 253, 0.1);
+        }
+      }
+    }
+  }
+
+  // Fix for icon wrapper styling
+  &__icon-wrapper {
+    &:has(.confirmation-modal__large-icon--danger) {
+      background: rgba(220, 53, 69, 0.1);
+
+      &::before {
+        background: rgba(220, 53, 69, 0.1);
+      }
+    }
+
+    &:has(.confirmation-modal__large-icon--warning) {
+      background: rgba(253, 126, 20, 0.1);
+
+      &::before {
+        background: rgba(253, 126, 20, 0.1);
+      }
+    }
+
+    &:has(.confirmation-modal__large-icon--info) {
+      background: rgba(13, 202, 240, 0.1);
+
+      &::before {
+        background: rgba(13, 202, 240, 0.1);
+      }
+    }
+
+    &:has(.confirmation-modal__large-icon--success) {
+      background: rgba(25, 135, 84, 0.1);
+
+      &::before {
+        background: rgba(25, 135, 84, 0.1);
+      }
+    }
+
+    &:has(.confirmation-modal__large-icon--primary) {
+      background: rgba(13, 110, 253, 0.1);
+
+      &::before {
+        background: rgba(13, 110, 253, 0.1);
+      }
+    }
+  }
+
+  &__message {
+    font-size: 1.125rem;
+    color: #495057;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 400px;
+    font-weight: 700;
+  }
+
+  &__footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid #dee2e6;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    justify-content: flex-end;
+    gap: 1rem;
+
+    .btn {
+      min-width: 120px;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__cancel-btn {
+    &:hover {
+      background-color: #6c757d;
+      border-color: #6c757d;
+      color: white;
+    }
+  }
+
+  &__confirm-btn {
+    position: relative;
+
+    .spinner-border-sm {
+      width: 1rem;
+      height: 1rem;
+      border-width: 0.125em;
+    }
+
+    &:disabled {
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Pulse animation
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Animation for modal
+.confirmation-modal {
+  .modal.fade .modal-dialog {
+    transform: translate(0, -50px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .modal.show .modal-dialog {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .confirmation-modal {
+    &__header,
+    &__body,
+    &__footer {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    &__body {
+      padding: 1.5rem 1rem;
+    }
+
+    &__icon-wrapper {
+      width: 60px;
+      height: 60px;
+    }
+
+    &__large-icon {
+      font-size: 2rem;
+    }
+
+    &__message {
+      font-size: 1rem;
+    }
+
+    &__footer {
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .btn {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  }
+}

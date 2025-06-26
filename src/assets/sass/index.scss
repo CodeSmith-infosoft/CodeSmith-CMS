@@ -1,0 +1,92 @@
+@import "./mixin";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #EFF3FF !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: none !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+section {
+  margin-top: 32px;
+}
+
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+h2 {
+  font-family: "Lato" !important;
+  font-weight: 700 !important;
+  font-size: 28px !important;
+  line-height: 100% !important;
+  letter-spacing: 0% !important;
+}
+
+h3 {
+  font-family: "Lato" !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 100% !important;
+  letter-spacing: 0% !important;
+  text-transform: capitalize !important;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
+
+@import url(./layouts/layouts.scss);
+@import url(./dashboard/dashboard.scss);
+@import url(./categories/categories.scss);
+@import url(./categories/subCatagory.scss);
+@import url(./single-product/SingleProduct.scss);
+@import url(./order/order.scss);
+@import url(./order/orderDetails.scss);
+@import url(./login/login.scss);
+@import url(./common.scss);
+@import url(./ConfirmationModal/ConfirmationModal.scss);
+@import url(./user/user.scss);
+@import url(./user/userDetails.scss);
+@import url(./coupon/coupon.scss);
+@import url(./market-place/MarketplaceManager.scss);
+@import url(./social-media/socialMedia.scss);
+@import url(./home-banner/homeBanner.scss);
+@import "react-toastify/dist/ReactToastify.css";
+
+h1 {
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 28px !important;
+  line-height: normal !important;
+}

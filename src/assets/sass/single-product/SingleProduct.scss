@@ -1,0 +1,427 @@
+@import "../mixin";
+
+.single-product {
+  .card {
+    box-shadow: 0px 4px 30px 0px #2e2d740d;
+    border: 0;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 24px;
+
+    label {
+      @include font(16px, 700, 100%, "Lato");
+      color: #777980;
+      padding-top: 14px;
+      padding-bottom: 8px;
+      display: block;
+    }
+
+    .feature-input {
+      display: flex;
+
+      .add-feature {
+        cursor: pointer;
+        padding: 15px;
+        color: #777980;
+      }
+    }
+
+    input {
+      @include font(14px, 400, 100%, "Lato");
+      border: 1px solid #f0f1f3;
+      background-color: #eff3ff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      width: 100%;
+
+      &:focus-within {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    textarea {
+      @include font(14px, 400, 100%, "Lato");
+      border: 1px solid #f0f1f3;
+      background-color: #eff3ff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      width: 100%;
+      height: 156px;
+    }
+
+    .category-drop {
+      .dropdown {
+        button {
+          padding: 11px 12px;
+          width: 100% !important;
+          background-color: #eff3ff !important;
+          border: 1px solid #f0f1f3 !important;
+          color: black;
+          border-radius: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .weight-date {
+      background-color: #eff3ff;
+      border-radius: 8px;
+      border: 1px solid #f0f1f3;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+
+      .rs-picker-toggle-wrapper {
+        max-width: 185px;
+
+        .rs-input-group.rs-input-group-inside {
+          background-color: white;
+          flex-direction: row-reverse;
+
+          input {
+            padding-inline: 10px;
+            padding-left: 0;
+            background-color: white;
+          }
+        }
+      }
+    }
+
+    .weight-add {
+      margin-top: 30px;
+
+      &-btn {
+        @include font(14px, 600, 100%, "Lato");
+        border-radius: 8px;
+        padding: 11px 14px;
+        background-color: #008000;
+        color: #fff;
+        float: right;
+        display: flex;
+        align-items: center;
+      }
+
+      .remove {
+        background-color: #ff0000;
+      }
+    }
+
+    .rs-picker-toggle-wrapper {
+      width: 100%;
+
+      .rs-picker-input-group {
+        border: 1px solid #f0f1f3;
+        &:focus-within {
+          outline: none;
+        }
+      }
+    }
+
+    .rs-picker-error > .rs-picker-input-group {
+      border: 1px solid #f0f1f3;
+    }
+  }
+
+  .active-pro {
+    .card {
+      padding: 34px 24px;
+      text-align: center;
+
+      h3 {
+        text-align: center;
+        padding-top: 16px;
+      }
+    }
+
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      margin: 0 auto;
+    }
+
+    .toggle-switch {
+      width: 55px;
+      height: 30px;
+      background-color: #ffe6e6;
+      border-radius: 30px;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      .toggle-knob {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        transition: left 0.3s ease;
+        background-color: #898989;
+
+        &.active {
+          background-color: red;
+          left: 30px;
+        }
+      }
+    }
+
+    .label-text {
+      margin-top: 30px;
+      font-size: 36px;
+      font-weight: bold;
+    }
+  }
+
+  .active-weight {
+    .card {
+      border-radius: 8px;
+      border: 1px solid #f0f1f3;
+      padding: 12px 22px;
+      text-align: center;
+      background-color: #eff3ff;
+    }
+
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    .toggle-switch {
+      width: 55px;
+      height: 30px;
+      background-color: #ffe6e6;
+      border-radius: 30px;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      .toggle-knob {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        transition: left 0.3s ease;
+        background-color: #898989;
+
+        &.active {
+          background-color: red;
+          left: 30px;
+        }
+      }
+    }
+
+    .label-text {
+      margin-top: 30px;
+      font-size: 36px;
+      font-weight: bold;
+    }
+  }
+
+  .inventory {
+    margin-top: 30px;
+  }
+
+  .general-information {
+    margin-top: 30px;
+  }
+
+  .pricing {
+    margin-top: 30px;
+
+    input {
+      padding: 8px 12px 12px 36px;
+    }
+
+    .row {
+      .col {
+        input {
+          padding: 8px 12px !important;
+        }
+      }
+    }
+  }
+
+  .Weight {
+    margin-top: 30px;
+
+    .dropdown {
+      button {
+        width: 100%;
+        background-color: #eff3ff;
+        border: 1px solid #f0f1f3;
+        color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .tag {
+    margin-top: 30px;
+  }
+
+  .file-upload {
+    .rs-btn {
+      display: block;
+    }
+
+    .upload-button {
+      border-radius: 8px;
+      padding: 24px 0;
+      background-color: #eff3ff;
+      border: 1px solid #f0f1f3;
+      width: 100%;
+
+      .img-logo {
+        margin: 0 auto;
+        width: 44px;
+        height: 44px;
+        background: #e31e24;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          color: #ffffff;
+        }
+      }
+
+      .add-img-btn {
+        margin-top: 16px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+
+        button {
+          background-color: #ffeded;
+          color: #e31e24;
+          padding: 10px 14px;
+          width: 100px;
+        }
+      }
+
+      label {
+        text-align: center;
+      }
+    }
+
+    .rs-uploader-file-items {
+      .rs-uploader-file-item {
+        display: flex;
+        position: initial;
+        align-items: center;
+        height: 96px;
+        padding: 0;
+        justify-content: space-between;
+
+        .rs-uploader-file-item-preview {
+          position: initial;
+
+          img {
+            object-fit: contain;
+            width: 94px;
+          }
+
+          width: 94px;
+          height: 94px;
+        }
+
+        .rs-uploader-file-item-panel {
+          width: 65%;
+
+          .rs-uploader-file-item-content {
+            .rs-uploader-file-item-title {
+              color: black;
+            }
+
+            .rs-uploader-file-item-status {
+              display: none;
+            }
+          }
+        }
+
+        .rs-uploader-file-item-btn-remove {
+          position: initial;
+          border: 0;
+          width: 40px;
+          background-color: #fff;
+          transition: 0.3s linear background-color;
+        }
+
+        &:hover {
+          .rs-uploader-file-item-btn-remove {
+            background-color: #f7f7fa;
+          }
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    width: 100%;
+  }
+}
+
+.product-status {
+  .toggle-switch {
+    width: 55px;
+    height: 30px;
+    background-color: #ffe6e6;
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    .toggle-knob {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      transition: left 0.3s ease;
+      background-color: #898989;
+
+      &.active {
+        background-color: red;
+        left: 30px;
+      }
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+}

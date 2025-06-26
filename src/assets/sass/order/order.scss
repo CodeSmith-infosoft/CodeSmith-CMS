@@ -1,0 +1,185 @@
+@import "../mixin";
+
+.order {
+  .nav {
+    border: 1px solid #f0f1f3;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+
+    .nav-item {
+      padding: 0;
+
+      .nav-link {
+        padding: 8px 16px;
+
+        @include font(18.67px, 500, 100%, "Lato");
+        color: #777980;
+
+        &.active {
+          background-color: #ffeded;
+          border-radius: 8px;
+          padding: 8px 16px;
+          color: #e31e24;
+          @include font(18.67px, 600, 100%, "Lato");
+          text-decoration: none;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .order-categories {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    .last-serach {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .date-section {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        .section-label {
+          @include font(18.67px, 600, 100%, "Lato");
+        }
+
+        .rs-input {
+          height: 42px;
+        }
+
+        .rs-btn-close {
+          padding: 0;
+
+          svg {
+            margin: 0;
+          }
+        }
+      }
+
+      .search-box {
+        position: relative;
+        display: inline-block;
+
+        input[type="search"] {
+          outline: none !important;
+          padding: 10px 48px !important;
+          border-radius: 10px;
+          width: 266px;
+          border: 1px solid #f0f1f3;
+          @include font(18.67px, 400, 100%, "Lato");
+          margin-right: 21px;
+        }
+
+        .search-icon {
+          position: absolute;
+          top: 50%;
+          left: 20px;
+          transform: translateY(-50%);
+          color: #aaa;
+          font-size: 16px;
+          pointer-events: none; // allows clicking through the icon
+        }
+      }
+
+      button {
+        background-color: #ffffff;
+        padding: 13px 18px;
+        color: #777980;
+        border-radius: 10px;
+        border: 1px solid #f0f1f3;
+        @include font(18.67px, 400, 100%, "Lato");
+
+        svg {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+  }
+
+  .tab-content {
+    padding-top: 32px;
+  }
+}
+
+#notification-tooltip {
+  .tooltip-inner {
+    max-width: 300px;
+    background-color: #EFF3FF !important;
+    max-height: 300px;
+
+    .notification-wrapper {
+      overflow-y: scroll;
+      max-height: 250px;
+      background-color: #EFF3FF;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding-inline: 5px;
+
+      .notification-item {
+        display: flex;
+        gap: 10px;
+        color: #777980;
+        background-color: #fff;
+        cursor: pointer;
+
+        .notification-image {
+          height: 40px;
+          width: 40px;
+          border-radius: 100%;
+        }
+
+        .content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .notification-label {
+          cursor: pointer;
+          text-align: left;
+          font-weight: 700;
+          color: black;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 3px;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+    }
+
+    .mark-read-btn {
+      margin-top: 7px;
+      width: 100%;
+      padding-block: 5px;
+      background-color: #fff;
+      border-radius: 5px;
+      color: black;
+    }
+  }
+}

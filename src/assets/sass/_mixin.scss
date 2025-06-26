@@ -1,0 +1,6 @@
+@mixin font($size, $weight, $lineHeight: 100%, $family: 'Lato') {
+  font-size: $size !important;
+  font-weight: $weight !important;
+  line-height: $lineHeight !important;
+  font-family: $family !important;
+}

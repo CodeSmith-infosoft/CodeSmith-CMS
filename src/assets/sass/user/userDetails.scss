@@ -1,0 +1,271 @@
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0 auto;
+  margin-top: 30px;
+
+  // Main Profile Card (Left)
+  .profile-card {
+    width: 60%;
+    flex: 1;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+
+    .profile-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #E6E9F4;
+      
+      .avatar {
+        margin: 0;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: #8B5CF6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 18px;
+      }
+      
+      .user-details {
+        .name {
+          font-size: 24px !important;
+          font-weight: 700 !important;
+          margin: 0 0 6px 0;
+        }
+        
+        .location, .customer-duration {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 14px;
+          color: #777980;
+          margin-bottom: 4px;
+          
+          .bullet {
+            color: #777980;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 24px;
+      
+      .star {
+        color: #FCD34D;
+        font-size: 16px;
+      }
+    }
+    
+    .customer-details {
+      .section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1F2937;
+        margin-bottom: 16px;
+      }
+      
+      .details-list {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        
+        .detail-item {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          width: 100%;
+          
+          .label {
+            font-size: 14px;
+            color: #6B7280;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          
+          .profile-input {
+            font-size: 16px;
+            padding: 16px;
+            border: 1px solid #D9E1EC;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  // Right Column
+  .right-column {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+
+    // Orders Card (Top Right)
+    .orders-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid #F3F4F6;
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        
+        .orders-info {
+          .total-orders-label {
+            display: block;
+            font-size: 12px;
+            color: #6B7280;
+            margin-bottom: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          
+          .total-orders-value {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 8px;
+          }
+          
+          .order-stats {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            
+            .percentage {
+              color: #10B981;
+              font-weight: 600;
+            }
+            
+            .separator {
+              color: #D1D5DB;
+            }
+            
+            .timeframe {
+              color: #6B7280;
+            }
+          }
+        }
+        
+        .cart-icon {
+          font-size: 20px;
+          color: #F59E0B;
+        }
+      }
+    }
+
+    // Balance Card (Bottom Right)
+    .balance-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid #F3F4F6;
+      
+      .balance-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        
+        .balance-label {
+          font-size: 12px;
+          color: #6B7280;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        
+        .balance-actions {
+          .balance-btn {
+            background: #F3F4F6;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-size: 14px;
+            cursor: pointer;
+            
+            &:hover {
+              background: #E5E7EB;
+            }
+          }
+        }
+      }
+      
+      .balance-amount {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1F2937;
+        margin-bottom: 8px;
+      }
+      
+      .balance-stats {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        
+        .balance-percentage {
+          color: #10B981;
+          font-weight: 600;
+        }
+        
+        .separator {
+          color: #D1D5DB;
+        }
+        
+        .balance-change {
+          color: #6B7280;
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+    
+    .right-column {
+      width: 100%;
+      flex-direction: row;
+      
+      .orders-card,
+      .balance-card {
+        flex: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    .right-column {
+      flex-direction: column;
+    }
+  }
+}

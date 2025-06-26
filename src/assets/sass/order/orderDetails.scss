@@ -1,0 +1,415 @@
+.order-details {
+  min-height: 100vh;
+
+  .card {
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+    .card-header {
+      border: 0;
+      border-radius: 16px 16px 0 0;
+      background-color: #fff;
+      padding: 24px 24px 0 24px;
+      
+      h5 {
+        width: 100%;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #F0F1F3;
+        margin: 0;
+        font-family: "Lato";
+        font-weight: 700;
+        font-size: 24px;
+      }
+    }
+
+    .card-body {
+      padding: 0.75rem 1.5rem 1.5rem 1.5rem;
+    }
+  }
+
+  // Order Header Card
+  .order-header-card {
+    border: none;
+    .order-header {
+      .order-title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid #F0F1F3;
+
+        h4 {
+          margin: 0;
+          font-family: "Lato";
+          font-weight: 700;
+          font-size: 24px;
+        }
+
+        .processing-badge {
+          background-color: #fff0ea;
+          color: #f86624;
+          padding: 5px 13px;
+          border-radius: 10px;
+          font-size: 18px;
+          font-weight: 600;
+          display: flex;
+        }
+
+        .edit-btn {
+          background: none;
+          border: none;
+          color: #6c757d;
+          padding: 0.25rem;
+          cursor: pointer;
+          border-radius: 4px;
+
+          &:hover {
+            background-color: #f8f9fa;
+            color: #495057;
+          }
+        }
+      }
+
+      .order-meta {
+        display: flex;
+        gap: 9px;
+        flex-direction: column;
+
+        .meta-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          border-bottom: 1px solid #F0F1F3;
+          padding-bottom: 9px;
+
+          .meta-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 54px;
+            width: 100%;
+            height: 54px;
+            background-color: #f0f1f3;
+            border-radius: 100%;
+            color: #777980;
+          }
+
+          div:last-child {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px;
+
+            .meta-label {
+              font-family: "Lato";
+              font-weight: 500;
+              font-size: 18px;
+            }
+
+            .meta-value {
+              font-family: "Lato";
+              font-weight: 500;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Order List Card
+  .order-list-card {
+    .card-header {
+      h5 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .order-count {
+          background-color: #e9faf7;
+          color: #1a9882;
+          padding: 5px 13px;
+          border-radius: 10px;
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .card-body {
+      tr {
+        .skuId {
+          color: #e31e24;
+        }
+
+        td {
+          font-family: 'Lato';
+          font-size: 18px;
+
+          .product {
+            img {
+                height: 58px;
+                width: 58px;
+            }
+          }
+        }
+
+        .fade-data {
+          color: #777980;
+        }
+      }
+    }
+  }
+
+  .customer-card {
+    height: 93%;
+  }
+  // Customer, Document, Address Cards
+  .customer-card,
+  .document-card {
+    border: none;
+    .customer-info,
+    .document-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      
+      .info-item {
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #F0F1F3;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .info-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: 54px;
+          width: 100%;
+          height: 54px;
+          background-color: #f0f1f3;
+          border-radius: 100%;
+          color: #777980;
+          flex-shrink: 0;
+        }
+
+        div:last-child {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          gap: 10px;
+
+          .info-label {
+            font-family: "Lato";
+            font-weight: 500;
+            font-size: 18px;
+          }
+
+          .info-value {
+            font-family: "Lato";
+            font-weight: 500;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  // Address Card
+  .address-card {
+    border: 0;
+    .address-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .address-item {
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #F0F1F3;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+
+        .address-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: 54px;
+          width: 100%;
+          height: 54px;
+          background-color: #f0f1f3;
+          border-radius: 100%;
+          color: #777980;
+          flex-shrink: 0;
+        }
+
+        div:last-child {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+
+          .address-label {
+            font-family: "Lato";
+            font-weight: 500;
+            font-size: 18.67px;
+            color: #777980;
+            margin-bottom: 0.25rem;
+          }
+
+          .address-value {
+            font-family: "Lato";
+            font-weight: 500;
+            font-size: 18px;
+            word-break: break-word;
+          }
+        }
+      }
+    }
+  }
+
+  // Order Status Card
+  .order-status-card {
+    .status-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 26px;
+        top: 24px;
+        bottom: 24px;
+        width: 2px;
+        background-color: #e9ecef;
+        z-index: 1;
+      }
+
+      .status-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        position: relative;
+        z-index: 2;
+
+        .status-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: 54px;
+          width: 100%;
+          height: 54px;
+          background-color: #f0f1f3;
+          border-radius: 100%;
+          color: #777980;
+        }
+
+        .status-content {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          padding-top: 0.25rem;
+
+          .status-title {
+            font-family: "Lato";
+            font-weight: 500;
+            font-size: 21.33px;
+            margin-bottom: 0.25rem;
+          }
+
+          .status-desc {
+            font-family: "Lato";
+            font-weight: 400;
+            font-size: 18.67px;
+            color: #4a4c56;
+            margin-bottom: 0.25rem;
+          }
+
+          .status-time {
+            font-family: "Lato";
+            font-weight: 500;
+            font-size: 16px;
+            color: #858d9d;
+          }
+        }
+
+        &.completed {
+          .status-icon {
+            background-color: #ffeded;
+            color: #e31e24;
+          }
+        }
+
+        &.active {
+          .status-icon {
+            background-color: #ffeded;
+            color: #e31e24;
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 991.98px) {
+    .order-header .order-meta {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .order-title {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .container-fluid {
+      padding: 1rem !important;
+    }
+
+    .card .card-body {
+      padding: 1rem;
+    }
+
+    .order-header .order-meta {
+      .meta-item {
+        .meta-icon {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+
+    .customer-info,
+    .document-info,
+    .address-section {
+      .info-item,
+      .address-item {
+        .info-icon,
+        .address-icon {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+
+    .status-timeline {
+      .status-item {
+        .status-icon {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+  }
+  
+  .order-subdata {
+   
+    &-total {
+      font-weight: 500;
+    }
+  }
+}

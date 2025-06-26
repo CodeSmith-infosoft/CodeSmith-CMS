@@ -1,0 +1,49 @@
+{
+  "name": "molimor-cms",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
+    "@iconify/react": "^6.0.0",
+    "apexcharts": "^4.7.0",
+    "axios": "^1.9.0",
+    "bootstrap": "^5.3.6",
+    "choices.js": "^11.1.0",
+    "ckeditor4-react": "^5.2.1",
+    "dayjs": "^1.11.13",
+    "firebase": "^11.9.0",
+    "react": "^18.3.1",
+    "react-apexcharts": "^1.7.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^18.3.1",
+    "react-flatpickr": "^4.0.10",
+    "react-hook-form": "^7.56.4",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.6.0",
+    "react-toastify": "^11.0.5",
+    "rsuite": "^5.80.2",
+    "sass": "1.77.6",
+    "zod": "^3.25.28"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.26.1",
+    "vite": "^6.3.1"
+  }
+}
