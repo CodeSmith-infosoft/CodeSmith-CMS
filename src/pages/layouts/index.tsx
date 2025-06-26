@@ -123,9 +123,9 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/subscription" ? "active-menu" : ""}
+                  className={pathname === "/team-member" ? "active-menu" : ""}
                 >
-                  <Link to="/subscription">
+                  <Link to="/team-member">
                     <MdSubscriptions size={22} /> Team Member
                   </Link>{" "}
                 </li>
@@ -144,9 +144,9 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/subscription" ? "active-menu" : ""}
+                  className={pathname === "/subscribers" ? "active-menu" : ""}
                 >
-                  <Link to="/subscription">
+                  <Link to="/subscribers">
                     <MdSubscriptions size={22} /> Subscriber
                   </Link>{" "}
                 </li>

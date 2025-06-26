@@ -26,6 +26,9 @@ import SingleBlogPage from "./pages/AddBlog";
 import Techstack from "./pages/Techstack";
 import CaseStudy from "./pages/CaseStudy";
 import AddCaseStudy from "./pages/AddCaseStudy";
+import TeamMember from "./pages/TeamMember";
+import SingleTeamMember from "./pages/AddTeamMember";
+import Subscribers from "./pages/Subscribe";
 
 function App() {
   return (
@@ -61,6 +64,10 @@ function App() {
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/add-blog" element={<SingleBlogPage />} />
               <Route path="/update-blog/:id" element={<SingleBlogPage />} />
+              <Route path="/team-member" element={<TeamMember />} />
+              <Route path="/add-team" element={<SingleTeamMember />} />
+              <Route path="/update-team/:id" element={<SingleTeamMember />} />
+              <Route path="/subscribers" element={<Subscribers />} />
               <Route path="/casestudy" element={<CaseStudy />} />
               <Route path="/add-casestudy" element={<AddCaseStudy />} />
               <Route path="/update-casestudy/:id" element={<AddCaseStudy />} />
