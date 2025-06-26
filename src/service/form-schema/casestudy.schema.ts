@@ -19,17 +19,12 @@ export const addCaseStudySchema = z.object({
 
   // JSON stringified arrays
   tech: z.array(z.string().min(1, "Tech is required")),
-  color: z.array(z.string().min(1, "Color is required")),
   devProcess: z.array(z.string().min(1, "Step is required")),
   problem: z.array(z.string().min(1, "Problem is required")),
+  challenges: z.array(z.string().min(1, "Challenges is required")),
+  conclusion: z.array(z.string().min(1, "Conclusion is required")),
 
   solution: z.array(solutionSchema).min(1, "At least one feature is required"),
-
-  challenges: z.array(z.string().min(1, "Challenges is required")),
-
-  typography: z.array(typographySchema).min(1, "At least one feature is required"),
-
-  conclusion: z.array(z.string().min(1, "Conclusion is required")),
 
   // Files handled via multer
   companyLogo: z.union([
@@ -39,6 +34,14 @@ export const addCaseStudySchema = z.object({
   mainImage: z.union([
     z.instanceof(File),
     z.string().url("Main image is required"),
+  ]),
+  color: z.union([
+    z.instanceof(File),
+    z.string().url("Color logo is required"),
+  ]),
+  typography: z.union([
+    z.instanceof(File),
+    z.string().url("Typography image is required"),
   ]),
 });
 

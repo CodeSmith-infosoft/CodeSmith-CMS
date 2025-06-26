@@ -43,7 +43,7 @@ const CaseStudyComponent = ({ setTotalCount }: ProductPropType) => {
       title: "Company Logo",
       dataIndex: "companyLogo",
       key: "companyLogo",
-      cellClass: "cursor-pointer",
+      cellClass: "cursor-pointer min-w-176",
       render: (value: string, data: BlogItemType) => (
         <>
           <div
@@ -63,7 +63,8 @@ const CaseStudyComponent = ({ setTotalCount }: ProductPropType) => {
     {
       title: "Project Name",
       dataIndex: "projectName",
-      key: "projectName"
+      key: "projectName",
+      cellClass: "min-w-176",
     },
     {
       title: "Description",
@@ -137,7 +138,7 @@ const CaseStudyComponent = ({ setTotalCount }: ProductPropType) => {
   };
 
   const handleEdit = (id: string) => {
-    navigate(`/update-blog/${id}`);
+    navigate(`/update-casestudy/${id}`);
   };
 
   const handleDeleteConfirm = async () => {
@@ -148,12 +149,7 @@ const CaseStudyComponent = ({ setTotalCount }: ProductPropType) => {
       deleteCaseStudy(productToDelete._id).then((res) => {
         const toast2 = res.success ? toast.success : toast.error;
         toast2(res.message);
-
-        if (res.success) {
-          setCaseStudyData((prev) =>
-            prev.filter((p) => p._id !== productToDelete._id)
-          );
-        }
+        getCaseStudyData()
       });
     } catch (error) {
       console.error("Error deleting product:", error);

@@ -126,7 +126,6 @@ const EnterpriseCard: React.FC = () => {
         title="Enterprise Logo"
         button="Enterprise Logo"
         openCategories={toggleModal}
-        isExport={false}
         totalCount={totalCount}
       />
       <Container fluid className="home-banner-manager">
@@ -183,8 +182,8 @@ const EnterpriseCard: React.FC = () => {
         title="Delete Home Banner"
         message={
           <>
-            Are you sure you want to delete this <b>Enterprise Logo</b>? This action
-            cannot be undone.
+            Are you sure you want to delete this <b>Enterprise Logo</b>? This
+            action cannot be undone.
           </>
         }
         confirmText="Delete"

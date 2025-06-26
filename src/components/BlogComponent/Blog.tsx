@@ -153,9 +153,7 @@ const Blog = ({ setTotalCount }: ProductPropType) => {
         toast2(res.message);
 
         if (res.success) {
-          setProductData((prev) =>
-            prev.filter((p) => p._id !== productToDelete._id)
-          );
+          getBlogData()
         }
       });
     } catch (error) {

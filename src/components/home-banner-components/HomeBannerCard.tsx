@@ -95,7 +95,7 @@ const HomeBannerCard: React.FC = () => {
         toast2(res.message);
 
         if (res.success) {
-          setBannerData((prev) => prev.filter((p) => p._id !== isEdit._id));
+          getMarketPlaceData();
         }
       });
     } catch (error) {

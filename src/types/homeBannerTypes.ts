@@ -46,7 +46,7 @@ export type bannerModalPropsType = {
 
     image: string | File;
   }>;
-  item?: TechStackItemType | null;
+  item?: bannerItemType | null;
   setValue: UseFormSetValue<{
 
     image: string | File;
@@ -56,3 +56,8 @@ export type bannerModalPropsType = {
 
   }>;
 };
+
+export type bannerItemType = {
+  _id: string;
+  image: string;
+}

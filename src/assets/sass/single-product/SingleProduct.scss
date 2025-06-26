@@ -43,6 +43,10 @@
       }
     }
 
+    .multi-select-check {
+      width: auto !important;
+    }
+
     textarea {
       @include font(14px, 400, 100%, "Lato");
       border: 1px solid #f0f1f3;
