@@ -3,12 +3,19 @@ import { ReactNode, useEffect, useState } from "react";
 import { Collapse, Container } from "react-bootstrap";
 import { GiCube } from "react-icons/gi";
 import { AiFillInstagram } from "react-icons/ai";
-import { FaAngleDown, FaAngleUp, FaPlus, FaUserCircle } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp, FaCommentAlt, FaFolderMinus, FaPlus, FaUserCircle } from "react-icons/fa";
 import { IoLogOutSharp } from "react-icons/io5";
-import { RiCoupon5Fill, RiLayoutBottom2Fill } from "react-icons/ri";
-import { MdAddLocationAlt, MdDashboard, MdSubscriptions } from "react-icons/md";
+import { RiCoupon5Fill, RiLayoutBottom2Fill, RiNotificationFill } from "react-icons/ri";
+import { MdAddLocationAlt, MdDashboard, MdNoteAlt, MdOutlineSupportAgent, MdPersonAddAlt1, MdSubscriptions } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { BsGlobeCentralSouthAsia, BsStack } from "react-icons/bs";
+import { HiChartBar, HiUserGroup } from "react-icons/hi";
+import { TfiInfoAlt } from "react-icons/tfi";
+import { IoMdClock } from "react-icons/io";
+import { HiMiniPhoto } from "react-icons/hi2";
+import { PiClockUserBold } from "react-icons/pi";
+import { BiSolidPhoneCall } from "react-icons/bi";
 
 type LayoutProps = {
   children: ReactNode;
@@ -44,7 +51,7 @@ const Layouts = ({ children }: LayoutProps) => {
                 </li>
                 <li className={pathname === "/techstack" ? "active-menu" : ""}>
                   <Link to="/techstack">
-                    <GiCube size={22} /> TechStack
+                    <BsStack size={22} /> TechStack
                   </Link>{" "}
                 </li>
                 <li
@@ -56,7 +63,7 @@ const Layouts = ({ children }: LayoutProps) => {
                   }
                 >
                   <Link to="/casestudy">
-                    <GiCube size={22} /> CaseStudy
+                    <BsGlobeCentralSouthAsia size={22} /> CaseStudy
                   </Link>{" "}
                 </li>
                 <li
@@ -68,7 +75,7 @@ const Layouts = ({ children }: LayoutProps) => {
                   }
                 >
                   <Link to="/career">
-                    <GiCube size={22} /> Career
+                    <HiChartBar size={22} /> Career
                   </Link>{" "}
                 </li>
                 <li
@@ -80,7 +87,7 @@ const Layouts = ({ children }: LayoutProps) => {
                   }
                 >
                   <Link to="/portfolio">
-                    <FaUserCircle size={22} /> Portfolio
+                    <FaFolderMinus size={22} /> Portfolio
                   </Link>{" "}
                 </li>
                 <li
@@ -92,21 +99,21 @@ const Layouts = ({ children }: LayoutProps) => {
                   }
                 >
                   <Link to="/testimonial">
-                    <RiCoupon5Fill size={22} /> Testimonials
+                    <FaCommentAlt size={22} /> Testimonials
                   </Link>{" "}
                 </li>
                 <li
                   className={pathname === "/about-us" ? "active-menu" : ""}
                 >
                   <Link to="/about-us">
-                    <MdAddLocationAlt size={22} /> About Us
+                    <TfiInfoAlt size={22} /> About Us
                   </Link>{" "}
                 </li>
                 <li
                   className={pathname === "/success-story" ? "active-menu" : ""}
                 >
                   <Link to="/success-story">
-                    <AiFillInstagram size={22} /> Success Story
+                    <PiClockUserBold size={22} /> Success Story
                   </Link>{" "}
                 </li>
                 <li
@@ -120,7 +127,7 @@ const Layouts = ({ children }: LayoutProps) => {
                 >
                   <div className="d-flex align-items-center menu-items">
                     <Link to="#">
-                      <Icon icon="line-md:list-3-filled" width={22} /> Contact
+                      <MdOutlineSupportAgent width={22} /> Contact
                     </Link>{" "}
                     <span>
                       {open ? (
@@ -159,14 +166,14 @@ const Layouts = ({ children }: LayoutProps) => {
                 </li>
                 <li className={pathname === "/gallery" ? "active-menu" : ""}>
                   <Link to="/gallery">
-                    <MdSubscriptions size={22} /> Gallery
+                    <HiMiniPhoto size={22} /> Gallery
                   </Link>{" "}
                 </li>
                 <li
                   className={pathname === "/team-member" ? "active-menu" : ""}
                 >
                   <Link to="/team-member">
-                    <MdSubscriptions size={22} /> Team Member
+                    <HiUserGroup size={22} /> Team Member
                   </Link>{" "}
                 </li>
                 <li
@@ -177,21 +184,21 @@ const Layouts = ({ children }: LayoutProps) => {
                   }
                 >
                   <Link to="/blog">
-                    <MdSubscriptions size={22} /> Blog
+                    <MdNoteAlt size={22} /> Blog
                   </Link>{" "}
                 </li>
                 <li
                   className={pathname === "/get-in-touch" ? "active-menu" : ""}
                 >
                   <Link to="/get-in-touch">
-                    <MdSubscriptions size={22} /> Get In Touch
+                    <BiSolidPhoneCall size={22} /> Get In Touch
                   </Link>{" "}
                 </li>
                 <li
                   className={pathname === "/subscribers" ? "active-menu" : ""}
                 >
                   <Link to="/subscribers">
-                    <MdSubscriptions size={22} /> Subscriber
+                    <RiNotificationFill size={22} /> Subscriber
                   </Link>{" "}
                 </li>
                 <li
@@ -200,7 +207,7 @@ const Layouts = ({ children }: LayoutProps) => {
                   }
                 >
                   <Link to="/hire-developer">
-                    <MdSubscriptions size={22} /> HireOurDeveloper
+                    <MdPersonAddAlt1 size={22} /> HireOurDeveloper
                   </Link>{" "}
                 </li>
               </ul>

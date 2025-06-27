@@ -85,29 +85,6 @@ const SuccessStoryCard: React.FC = () => {
     }
   };
 
-  // const onSubmit = async (
-  //   data: successFormSchemaType,
-  //   setFileList: React.Dispatch<any>
-  // ) => {
-  //   setIsDeleting(true);
-  //   const formData = new FormData();
-  //   formData.append("image", data.image);
-  //   formData.append("type", data.type); // Add the type field
-
-  //   addSuccess(formData)
-  //     .then((res) => {
-  //       const toast2 = res.success ? toast.success : toast.error;
-  //       toast2(res.message);
-  //       if (res.success) {
-  //         toggleModal(false);
-  //         setFileList(null);
-  //         reset();
-  //         getMarketPlaceData();
-  //       }
-  //     })
-  //     .finally(() => setIsDeleting(false));
-  // };
-
   const onSubmit = async (
   data: successFormSchemaType,
   setFileList: React.Dispatch<any>
@@ -115,9 +92,7 @@ const SuccessStoryCard: React.FC = () => {
   setIsDeleting(true);
   const formData = new FormData();
   formData.append("image", data.image);
-  // Remove this line: formData.append("type", data.type);
-
-  addSuccess(formData, { type: data.type }) // Pass type as second parameter
+  addSuccess(formData, { type: data.type }) 
     .then((res) => {
       const toast2 = res.success ? toast.success : toast.error;
       toast2(res.message);
