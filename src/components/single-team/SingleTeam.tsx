@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Card,
-  Col,
-  Form,
-  Row,
-} from "react-bootstrap";
+import { Card, Col, Form, Row } from "react-bootstrap";
 import { BsFileImageFill } from "react-icons/bs";
 import { Uploader } from "rsuite";
 import "rsuite/dist/rsuite.css";
@@ -15,8 +10,15 @@ import PageTitle from "../CommonComponents/PageTitle";
 import { getImageAsBlob, toBase64 } from "@/utils/helper";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import { addTeam, getTeamById, updateTeam } from "@/service/asyncStore/action/team";
-import SingleTeamSchema, { SingleTeamFormData } from "@/service/form-schema/team.schema";
+import {
+  addTeam,
+  getTeamById,
+  updateTeam,
+} from "@/service/asyncStore/action/team";
+import SingleTeamSchema, {
+  SingleTeamFormData,
+} from "@/service/form-schema/team.schema";
+import { maxSizeInBytes } from "@/utils/constant";
 
 const SingleTeam = () => {
   const [fileList, setFileList] = useState<any>([]);
@@ -40,7 +42,7 @@ const SingleTeam = () => {
       facebook: "",
       twitter: "",
       textColor: "",
-      bgColor: ""
+      bgColor: "",
     },
   });
 
@@ -119,6 +121,12 @@ const SingleTeam = () => {
       return;
     }
 
+    if (file.size > maxSizeInBytes) {
+      toast.error("File size must be 1MB or less.");
+      setFileList([]);
+      return;
+    }
+
     const base64 = await toBase64(file);
     setFileList([{ ...data, url: base64 }]);
     field.onChange(file);
@@ -177,7 +185,7 @@ const SingleTeam = () => {
             </Col>
             <Col md={12}>
               <div className="general-information">
-                <Card>
+                <Card className="mb-4">
                   <h3>Team Member</h3>
 
                   <label htmlFor="">Name</label>
@@ -192,7 +200,7 @@ const SingleTeam = () => {
                   />
                   <ErrorMessage message={errors.position?.message} />
                 </Card>
-                <Card>
+                <Card className="mb-4">
                   <h3>Social Media</h3>
 
                   <label htmlFor="">LinkedIn</label>
@@ -225,11 +233,15 @@ const SingleTeam = () => {
                   />
                   <ErrorMessage message={errors.twitter?.message} />
                 </Card>
-                <Card>
+                <Card className="mb-4">
                   <h3>Color</h3>
 
                   <label htmlFor="">Text Color</label>
-                  <input type="text" placeholder="Text Color" {...register("textColor")} />
+                  <input
+                    type="text"
+                    placeholder="Text Color"
+                    {...register("textColor")}
+                  />
                   <ErrorMessage message={errors.textColor?.message} />
 
                   <label htmlFor="">Background Color</label>

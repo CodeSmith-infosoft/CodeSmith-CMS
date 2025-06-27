@@ -1,14 +1,13 @@
 import { toBase64 } from "@/utils/helper";
 import { useState } from "react";
-import {
-  Modal,
-} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { Controller } from "react-hook-form";
 import { Button } from "rsuite";
 import Uploader from "rsuite/esm/Uploader";
 import ErrorMessage from "../ErrorMessage";
 import { bannerModalPropsType } from "@/types/homeBannerTypes";
 import { toast } from "react-toastify";
+import { maxSizeInBytes } from "@/utils/constant";
 
 const AddHomeBanner = ({
   handleToggle,
@@ -27,6 +26,12 @@ const AddHomeBanner = ({
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
+      return;
+    }
+
+    if (file.size > maxSizeInBytes) {
+      toast.error("File size must be 1MB or less.");
+      setFileList([]);
       return;
     }
 

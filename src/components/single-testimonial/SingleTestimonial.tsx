@@ -18,6 +18,7 @@ import {
   getTestimonialById,
   updateTestimonial,
 } from "@/service/asyncStore/action/testimonial";
+import { maxSizeInBytes } from "@/utils/constant";
 
 const SingleTestimonial = () => {
   const [fileList, setFileList] = useState<any>([]);
@@ -91,10 +92,16 @@ const SingleTestimonial = () => {
   };
 
   const handleFeildChange = async (newFileList: any, field: any) => {
-    const data = newFileList[0];
+    const data = newFileList.at(-1);
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
+      return;
+    }
+
+    if (file.size > maxSizeInBytes) {
+      toast.error("File size must be 1MB or less.");
+      setFileList([]);
       return;
     }
 

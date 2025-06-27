@@ -6,6 +6,8 @@ import { Button } from "rsuite";
 import Uploader from "rsuite/esm/Uploader";
 import ErrorMessage from "../ErrorMessage";
 import { galleryModalPropsType } from "@/types/galleryBannerTypes";
+import { maxSizeInBytes } from "@/utils/constant";
+import { toast } from "react-toastify";
 
 const AddGallery = ({
   handleToggle,
@@ -19,13 +21,21 @@ const AddGallery = ({
   const [fileList, setFileList] = useState<any | null>(null);
 
   const handleFeildChange = async (newFileList: any[], field: any) => {
-    const formValue: File[] = []; 
+    const formValue: File[] = [];
+    console.log(newFileList)
+
+    let exceedLength = newFileList.filter(file => file.blobFile.size > maxSizeInBytes)
+
+    if (exceedLength.length) {
+      toast.error("All file size must be 1MB or less.");
+      newFileList = newFileList.filter(file => file.blobFile.size <= maxSizeInBytes)
+    }
 
     const updatedList = await Promise.all(
       newFileList.map(async (fileWrapper: any) => {
         if (!fileWrapper.url && fileWrapper.blobFile) {
           const base64 = await toBase64(fileWrapper.blobFile);
-          formValue.push(fileWrapper.blobFile); 
+          formValue.push(fileWrapper.blobFile);
           return {
             ...fileWrapper,
             url: base64,
@@ -36,7 +46,7 @@ const AddGallery = ({
       })
     );
 
-    setFileList(updatedList); 
+    setFileList(updatedList);
     field.onChange(formValue);
   };
 

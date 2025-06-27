@@ -16,7 +16,7 @@ import addCaseStudySchema, {
 } from "@/service/form-schema/casestudy.schema";
 import { RxCross2 } from "react-icons/rx";
 import { GoPlus } from "react-icons/go";
-import { allTechData } from "@/utils/constant";
+import { allTechData, maxSizeInBytes } from "@/utils/constant";
 import {
   addCaseStudy,
   getCaseStudyById,
@@ -261,11 +261,17 @@ const SingleCaseStudy = () => {
     field: any,
     key: string
   ) => {
-    const data = newFileList[0];
+    const data = newFileList.at(-1);
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
       return;
+    }
+
+    if (file.size > maxSizeInBytes) {
+      toast.error("File size must be 1MB or less.");
+      setFileList({ ...fileList, [key]: [] });
+      return null;
     }
 
     // const image = new Image();
@@ -281,7 +287,7 @@ const SingleCaseStudy = () => {
       const current = getValues("problem") || [];
       setValue("problem", [...current, currentProblem]);
       setCurrentProblem("");
-      clearErrors("problem")
+      clearErrors("problem");
     }
   };
 
@@ -311,7 +317,7 @@ const SingleCaseStudy = () => {
       const current = getValues("devProcess") || [];
       setValue("devProcess", [...current, currentDev]);
       setCurrentDev("");
-      clearErrors("devProcess")
+      clearErrors("devProcess");
     }
   };
 
@@ -341,7 +347,7 @@ const SingleCaseStudy = () => {
       const current = getValues("challenges") || [];
       setValue("challenges", [...current, currentChallenge]);
       setCurrentChallenge("");
-      clearErrors("challenges")
+      clearErrors("challenges");
     }
   };
 
@@ -371,7 +377,7 @@ const SingleCaseStudy = () => {
       const current = getValues("conclusion") || [];
       setValue("conclusion", [...current, currentConclusion]);
       setCurrentConclusion("");
-      clearErrors("conclusion")
+      clearErrors("conclusion");
     }
   };
 
@@ -613,10 +619,16 @@ const SingleCaseStudy = () => {
                   />
                   <ErrorMessage message={errors.projectName?.message} />
 
-                  <label htmlFor="">Description</label>
+                  <label htmlFor="">Description (Max-Characters: 820)</label>
                   <textarea
+                    maxLength={820}
                     placeholder="Type product name here. . ."
-                    {...register("description")}
+                    {...register("description", {
+                      maxLength: {
+                        value: 820,
+                        message: "Paragraph must contain less then 820 letters",
+                      },
+                    })}
                   />
                   <ErrorMessage message={errors.description?.message} />
                 </Card>
@@ -731,10 +743,17 @@ const SingleCaseStudy = () => {
                           />
                         </Col>
                         <Col md={9}>
-                          <label htmlFor="">Content</label>
+                          <label htmlFor="">Content (Max-Characters: 205)</label>
                           <textarea
+                            maxLength={205}
                             placeholder="Type content name here. . ."
-                            {...register(`solution.${index}.p`)}
+                            {...register(`solution.${index}.p`, {
+                              maxLength: {
+                                value: 205,
+                                message:
+                                  "Paragraph must contain less then 820 letters",
+                              },
+                            })}
                           />
                           <ErrorMessage
                             message={errors.solution?.[index]?.p?.message}
@@ -865,12 +884,13 @@ const SingleCaseStudy = () => {
               <div className="general-information">
                 <Card>
                   <h3>Dev Process</h3>
-                  <label htmlFor="">Description</label>
+                  <label htmlFor="">Description (Max-Characters: 80)</label>
                   <div className="feature-input">
                     <input
                       type="text"
                       placeholder="Type dev details here. . ."
                       value={currentDev}
+                      maxLength={80}
                       onChange={(e) => setCurrentDev(e.target.value)}
                       onKeyPress={(e) => e.key === "Enter" && addDev()}
                     />
@@ -892,6 +912,7 @@ const SingleCaseStudy = () => {
                               ? editDevValue
                               : getValues(`devProcess.${index}`)
                           }
+                          maxLength={80}
                           disabled={devEdit !== index}
                           ref={(el) => {
                             if (el) {

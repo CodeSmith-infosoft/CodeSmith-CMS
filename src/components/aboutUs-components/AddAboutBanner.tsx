@@ -14,6 +14,7 @@ import ErrorMessage from "../ErrorMessage";
 import { toast } from "react-toastify";
 import { aboutModalPropsType } from "@/types/aboutUsTypes";
 import { FaAngleDown } from "react-icons/fa";
+import { maxSizeInBytes } from "@/utils/constant";
 
 const AddAboutBanner = ({
   handleToggle,
@@ -37,6 +38,12 @@ const AddAboutBanner = ({
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
+      return;
+    }
+
+    if (file.size > maxSizeInBytes && watch("type") === "image") {
+      toast.error("File size must be 1MB or less.");
+      setFileList([]);
       return;
     }
 

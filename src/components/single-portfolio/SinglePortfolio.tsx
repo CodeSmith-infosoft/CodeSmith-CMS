@@ -30,6 +30,7 @@ import {
 } from "@/service/asyncStore/action/portfolio";
 import { TechStackItemType } from "@/types/techStackTypes";
 import { getAllTechStack } from "@/service/asyncStore/action/techStack";
+import { maxSizeInBytes } from "@/utils/constant";
 
 const SinglePortfolio = () => {
   const [fileList, setFileList] = useState<any>({
@@ -84,7 +85,7 @@ const SinglePortfolio = () => {
     });
   }, []);
 
-  console.log(errors, getValues());
+  console.log(errors, getValues(), fileList);
 
   useEffect(() => {
     if (id) {
@@ -101,13 +102,13 @@ const SinglePortfolio = () => {
             image: [
               {
                 url: import.meta.env.VITE_IMAGE_DOMAIN + data.image,
-                name: data.companyLogo.split("/").at(-1),
+                name: data.image.split("/").at(-1),
               },
             ],
             banner: [
               {
                 url: import.meta.env.VITE_IMAGE_DOMAIN + data.banner,
-                name: data.mainImage.split("/").at(-1),
+                name: data.banner.split("/").at(-1),
               },
             ],
           });
@@ -155,10 +156,16 @@ const SinglePortfolio = () => {
     field: any,
     key: string
   ) => {
-    const data = newFileList[0];
+    const data = newFileList.at(-1);
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
+      return;
+    }
+
+    if (file.size > maxSizeInBytes) {
+      toast.error("File size must be 1MB or less.");
+      setFileList({...fileList, [key]: []});
       return;
     }
 

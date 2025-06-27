@@ -12,7 +12,7 @@ const typographySchema = z.object({
 
 export const addCaseStudySchema = z.object({
   projectName: z.string().min(1, "Project Name is required"),
-  description: z.string().min(1, "Description is required"),
+  description: z.string().min(1, "Description is required").max(820, "Paragraph must contain less then 820 letters."),
   platform: z.string().min(1, "Platform is required"),
   duration: z.string().min(1, "Duration is required"),
   industry: z.string().min(1, "Industry is required"),

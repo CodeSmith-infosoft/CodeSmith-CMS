@@ -1,6 +1,4 @@
-import {
-  Modal,
-} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { Button } from "rsuite";
 import { Controller } from "react-hook-form";
 import ErrorMessage from "../ErrorMessage";
@@ -8,6 +6,8 @@ import { useEffect, useState } from "react";
 import { hireDevModalPropsType } from "@/types/hireDevTypes";
 import { Uploader } from "rsuite";
 import { toBase64 } from "@/utils/helper";
+import { maxSizeInBytes } from "@/utils/constant";
+import { toast } from "react-toastify";
 
 const AddHire = ({
   handleToggle,
@@ -48,6 +48,12 @@ const AddHire = ({
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
+      return;
+    }
+
+    if (file.size > maxSizeInBytes) {
+      toast.error("File size must be 1MB or less.");
+      setFileList([]);
       return;
     }
 

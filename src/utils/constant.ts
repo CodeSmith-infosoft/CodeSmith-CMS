@@ -1,3 +1,5 @@
+export const maxSizeInBytes = 1 * 1024 * 1024;
+
 export const allTechData = [
   // Frontend
   { title: 'Vue.js' },

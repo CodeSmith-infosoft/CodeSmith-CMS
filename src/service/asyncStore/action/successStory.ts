@@ -8,7 +8,7 @@ export type getSuccessPayloadType = {
 export async function addSuccess(payload: FormData, type: string) {
   try {
     const response = api.post(
-      `/successStory/addSuccessStoryImage?${getParamString(type)}`,
+      `/successStory/addSuccessStoryImage?type=${type}`,
       payload
     );
 

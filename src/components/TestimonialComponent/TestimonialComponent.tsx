@@ -37,8 +37,8 @@ const TestimonialComponent = ({ setTotalCount }: ProductPropType) => {
     {
       // title: <div className='d-flex align-items-center'><input className='input-box me-2' type="checkbox" />Products</div>,
       title: "Image",
-      dataIndex: "photo",
-      key: "photo",
+      dataIndex: "image",
+      key: "image",
       cellClass: "cursor-pointer",
       render: (value: string, data: TestimonialItemType) => (
         <>

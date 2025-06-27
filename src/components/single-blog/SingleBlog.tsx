@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -30,6 +30,7 @@ import {
   getBlogById,
   updateBlog,
 } from "@/service/asyncStore/action/blog";
+import { maxSizeInBytes } from "@/utils/constant";
 
 const SingleBlog = () => {
   const [techstachData, setTechstachData] = useState<TechStackItemType[]>([]);
@@ -124,6 +125,12 @@ const SingleBlog = () => {
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
+      return;
+    }
+
+    if (file.size > maxSizeInBytes) {
+      toast.error("File size must be 1MB or less.");
+      setFileList([]);
       return;
     }
 

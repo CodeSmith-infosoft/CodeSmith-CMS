@@ -38,8 +38,8 @@ const PortfolioComponent = ({ setTotalCount }: ProductPropType) => {
     {
       // title: <div className='d-flex align-items-center'><input className='input-box me-2' type="checkbox" />Products</div>,
       title: "Company Logo",
-      dataIndex: "companyLogo",
-      key: "companyLogo",
+      dataIndex: "image",
+      key: "image",
       cellClass: "cursor-pointer min-w-176",
       render: (value: string, data: BlogItemType) => (
         <>

@@ -57,7 +57,7 @@ const Layouts = ({ children }: LayoutProps) => {
                 <li
                   className={
                     pathname === "/casestudy" ||
-                    pathname.split("/")[1] === "casestudy"
+                    pathname.split("-")[1] === "casestudy"
                       ? "active-menu"
                       : ""
                   }
@@ -69,7 +69,7 @@ const Layouts = ({ children }: LayoutProps) => {
                 <li
                   className={
                     pathname === "/career" ||
-                    pathname.split("/")[1] === "career"
+                    pathname.split("-")[1] === "career"
                       ? "active-menu"
                       : ""
                   }
@@ -81,7 +81,7 @@ const Layouts = ({ children }: LayoutProps) => {
                 <li
                   className={
                     pathname === "/portfolio" ||
-                    pathname.split("/")[1] === "portfolio"
+                    pathname.split("-")[1] === "portfolio"
                       ? "active-menu"
                       : ""
                   }
@@ -93,7 +93,7 @@ const Layouts = ({ children }: LayoutProps) => {
                 <li
                   className={
                     pathname === "/testimonial" ||
-                    pathname.split("/")[1] === "testimonial"
+                    pathname.split("-")[1] === "testimonial"
                       ? "active-menu"
                       : ""
                   }
@@ -170,7 +170,7 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/team-member" ? "active-menu" : ""}
+                  className={pathname === "/team-member" || pathname.split("-")[1] === "team" ? "active-menu" : ""}
                 >
                   <Link to="/team-member">
                     <HiUserGroup size={22} /> Team Member
