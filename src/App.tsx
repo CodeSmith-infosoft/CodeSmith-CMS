@@ -20,6 +20,11 @@ import AddCareer from "./pages/AddCareer";
 import Portfolio from "./pages/Portfolio";
 import AddPortfolio from "./pages/AddPortfolio";
 import HireDeveloper from "./pages/HireDeveloper";
+import Gallery from "./pages/Gallery";
+import GetInTouch from "./pages/GetInTouch";
+import Testimonial from "./pages/Testimonial";
+import SingleTestimonial from "./components/single-testimonial/SingleTestimonial";
+import BusinessInquiry from "./pages/BusinessInquiry";
 
 function App() {
   return (
@@ -30,6 +35,15 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/" element={<HomeBanner />} />
               <Route path="/techstack" element={<Techstack />} />
+              <Route path="/testimonial" element={<Testimonial />} />
+              <Route path="/business-inquiry" element={<BusinessInquiry />} />
+              <Route path="/add-testimonial" element={<SingleTestimonial />} />
+              <Route
+                path="/update-testimonial/:id"
+                element={<SingleTestimonial />}
+              />
+              <Route path="/get-in-touch" element={<GetInTouch />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/add-blog" element={<SingleBlogPage />} />
               <Route path="/update-blog/:id" element={<SingleBlogPage />} />
