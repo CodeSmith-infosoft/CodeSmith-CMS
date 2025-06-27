@@ -173,7 +173,14 @@ const SingleTestimonial = () => {
                   <input
                     type="text"
                     placeholder="Description"
-                    {...register("description")}
+                    maxLength={345}
+                    {...register("description", {
+                      required: "Description is required",
+                      maxLength: {
+                        value: 345,
+                        message: "Description cannot exceed 800 characters",
+                      },
+                    })}
                   />
                   <ErrorMessage message={errors.description?.message} />
                   <label htmlFor="">Rating</label>
