@@ -245,8 +245,15 @@ const SingleBlog = () => {
 
                   <label htmlFor="">Description</label>
                   <textarea
-                    placeholder="Type product description here. . ."
-                    {...register("description")}
+                    placeholder="Type blog description here. . ."
+                    maxLength={800}
+                    {...register("description", {
+                      required: "Description is required",
+                      maxLength: {
+                        value: 800,
+                        message: "Description cannot exceed 800 characters",
+                      },
+                    })}
                   />
                   <ErrorMessage message={errors.description?.message} />
 

@@ -299,7 +299,14 @@ const SinglePortfolio = () => {
                       <input
                         type="text"
                         placeholder="Type product name here. . ."
-                        {...register("projectName")}
+                        maxLength={16}
+                        {...register("projectName", {
+                          required: "Project Name is required",
+                          maxLength: {
+                            value: 16,
+                            message: "Project Name cannot exceed 16 characters",
+                          },
+                        })}
                       />
                       <ErrorMessage message={errors.projectName?.message} />
                     </Col>
@@ -346,7 +353,14 @@ const SinglePortfolio = () => {
                       <label htmlFor="">Description</label>
                       <textarea
                         placeholder="Type description name here. . ."
-                        {...register("description")}
+                        maxLength={760}
+                        {...register("description", {
+                          required: "Description is required",
+                          maxLength: {
+                            value: 760,
+                            message: "Description cannot exceed 760 characters",
+                          },
+                        })}
                       />
                       <ErrorMessage message={errors.description?.message} />
                     </Col>
@@ -361,6 +375,7 @@ const SinglePortfolio = () => {
                   <div className="feature-input">
                     <input
                       type="text"
+                      maxLength={40}
                       placeholder="Type product feature here. . ."
                       value={currentFeature}
                       onChange={(e) => setCurrentFeature(e.target.value)}
@@ -379,6 +394,7 @@ const SinglePortfolio = () => {
                       >
                         <input
                           type="text"
+                          maxLength={40}
                           value={
                             featureEdit === index
                               ? editFeatureValue
