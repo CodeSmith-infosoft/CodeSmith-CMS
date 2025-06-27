@@ -25,6 +25,8 @@ import GetInTouch from "./pages/GetInTouch";
 import Testimonial from "./pages/Testimonial";
 import SingleTestimonial from "./components/single-testimonial/SingleTestimonial";
 import BusinessInquiry from "./pages/BusinessInquiry";
+import JobApplication from "./pages/JobApplication";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -61,7 +63,8 @@ function App() {
               <Route path="/add-portfolio" element={<AddPortfolio />} />
               <Route path="/update-portfolio/:id" element={<AddPortfolio />} />
               <Route path="/hire-developer" element={<HireDeveloper />} />
-              <Route path="/career" element={<CareerPage />} />
+              <Route path="/job-application" element={<JobApplication />} />
+              <Route path="/about-us" element={<AboutUs />} />
             </Route>
             <Route element={<RejectAuth />}>
               <Route path="/login" element={<Login />} />

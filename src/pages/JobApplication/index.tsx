@@ -1,16 +1,17 @@
 import BusinessComponent from "@/components/BusinessComponent/BusinessComponent";
 import PageTitle from "@/components/CommonComponents/PageTitle";
+import JobComponent from "@/components/JobComponent/JobComponent";
 import { useState } from "react";
 
-const BusinessInquiry = () => {
+const JobApplication = () => {
   const [totalCount, setTotalCount] = useState(0);
 
   return (
     <>
-      <PageTitle title="Business Inquiry" totalCount={totalCount} />
-      <BusinessComponent setTotalCount={setTotalCount} />
+      <PageTitle title="Job Application" totalCount={totalCount} />
+      <JobComponent setTotalCount={setTotalCount} />
     </>
   );
 };
 
-export default BusinessInquiry;
+export default JobApplication;

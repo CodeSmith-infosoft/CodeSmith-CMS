@@ -1,18 +1,12 @@
 import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
   Modal,
 } from "react-bootstrap";
 import { Button } from "rsuite";
 import { Controller } from "react-hook-form";
 import ErrorMessage from "../ErrorMessage";
-import { FaAngleDown } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { hireDevModalPropsType } from "@/types/hireDevTypes";
 import { Uploader } from "rsuite";
-import { toast } from "react-toastify";
 import { toBase64 } from "@/utils/helper";
 
 const AddHire = ({

@@ -1,13 +1,14 @@
 import logo from "@/assets/image/logo.svg";
-import { ReactNode } from "react";
-import { Container } from "react-bootstrap";
+import { ReactNode, useEffect, useState } from "react";
+import { Collapse, Container } from "react-bootstrap";
 import { GiCube } from "react-icons/gi";
 import { AiFillInstagram } from "react-icons/ai";
-import { FaUserCircle } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp, FaPlus, FaUserCircle } from "react-icons/fa";
 import { IoLogOutSharp } from "react-icons/io5";
 import { RiCoupon5Fill, RiLayoutBottom2Fill } from "react-icons/ri";
 import { MdAddLocationAlt, MdDashboard, MdSubscriptions } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 type LayoutProps = {
   children: ReactNode;
@@ -17,11 +18,14 @@ const Layouts = ({ children }: LayoutProps) => {
   const location = useLocation();
   const { pathname } = location;
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
+  console.log(pathname);
 
   return (
     <>
@@ -32,26 +36,21 @@ const Layouts = ({ children }: LayoutProps) => {
               <img src={logo} alt={logo} />
             </div>
             <div className="menu-items">
-              <ul>
+              <ul className="mt-5">
                 <li className={pathname === "/" ? "active-menu" : ""}>
                   <Link to="/">
                     <MdDashboard size={22} /> Dashboard
                   </Link>{" "}
                 </li>
-                <li
-                  className={
-                    pathname === "/techstack"
-                      ? "active-menu"
-                      : ""
-                  }
-                >
+                <li className={pathname === "/techstack" ? "active-menu" : ""}>
                   <Link to="/techstack">
                     <GiCube size={22} /> TechStack
                   </Link>{" "}
                 </li>
                 <li
                   className={
-                    pathname === "/casestudy" || pathname.split("/")[1] === "casestudy"
+                    pathname === "/casestudy" ||
+                    pathname.split("/")[1] === "casestudy"
                       ? "active-menu"
                       : ""
                   }
@@ -62,7 +61,8 @@ const Layouts = ({ children }: LayoutProps) => {
                 </li>
                 <li
                   className={
-                    pathname === "/career" || pathname.split("/")[1] === "career"
+                    pathname === "/career" ||
+                    pathname.split("/")[1] === "career"
                       ? "active-menu"
                       : ""
                   }
@@ -73,7 +73,8 @@ const Layouts = ({ children }: LayoutProps) => {
                 </li>
                 <li
                   className={
-                    pathname === "/portfolio" || pathname.split("/")[1] === "portfolio"
+                    pathname === "/portfolio" ||
+                    pathname.split("/")[1] === "portfolio"
                       ? "active-menu"
                       : ""
                   }
@@ -95,9 +96,9 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/market-place" ? "active-menu" : ""}
+                  className={pathname === "/about-us" ? "active-menu" : ""}
                 >
-                  <Link to="/market-place">
+                  <Link to="/about-us">
                     <MdAddLocationAlt size={22} /> About Us
                   </Link>{" "}
                 </li>
@@ -109,15 +110,54 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/business-inquiry" ? "active-menu" : ""}
+                  className={
+                    pathname === "/business-inquiry" ||
+                    pathname === "/job-application"
+                      ? "active-menu"
+                      : ""
+                  }
+                  onClick={() => setOpen(!open)}
                 >
-                  <Link to="business-inquiry">
-                    <RiLayoutBottom2Fill size={22} /> Contact
-                  </Link>{" "}
+                  <div className="d-flex align-items-center menu-items">
+                    <Link to="#">
+                      <Icon icon="line-md:list-3-filled" width={22} /> Contact
+                    </Link>{" "}
+                    <span>
+                      {open ? (
+                        <FaAngleUp size={18} />
+                      ) : (
+                        <FaAngleDown size={18} />
+                      )}{" "}
+                    </span>
+                  </div>
+                  <Collapse in={open}>
+                    <div className="drop-items">
+                      <label
+                        className={`category-checkbox ${
+                          pathname === "/business-inquiry" ? "active" : ""
+                        }`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/business-inquiry`);
+                        }}
+                      >
+                        <FaPlus /> Business Inquiry
+                      </label>
+                      <label
+                        className={`category-checkbox ${
+                          pathname === "/job-application" ? "active" : ""
+                        }`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/job-application`);
+                        }}
+                      >
+                        <FaPlus /> Job Application
+                      </label>
+                    </div>
+                  </Collapse>
                 </li>
-                <li
-                  className={pathname === "/gallery" ? "active-menu" : ""}
-                >
+                <li className={pathname === "/gallery" ? "active-menu" : ""}>
                   <Link to="/gallery">
                     <MdSubscriptions size={22} /> Gallery
                   </Link>{" "}
@@ -130,7 +170,11 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/blog" || pathname.split("-")[1] === "blog" ? "active-menu" : ""}
+                  className={
+                    pathname === "/blog" || pathname.split("-")[1] === "blog"
+                      ? "active-menu"
+                      : ""
+                  }
                 >
                   <Link to="/blog">
                     <MdSubscriptions size={22} /> Blog
@@ -151,7 +195,9 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/hire-developer" ? "active-menu" : ""}
+                  className={
+                    pathname === "/hire-developer" ? "active-menu" : ""
+                  }
                 >
                   <Link to="/hire-developer">
                     <MdSubscriptions size={22} /> HireOurDeveloper

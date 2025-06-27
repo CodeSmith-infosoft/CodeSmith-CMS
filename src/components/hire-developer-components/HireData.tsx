@@ -5,13 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import ConfirmationModal from "../ConfirmationModal";
-import AddTechstack from "./AddHire";
 import CommonTable from "../CommonComponents/CommonTable";
 import { HiDotsVertical } from "react-icons/hi";
-import { TechStackItemType } from "@/types/techStackTypes";
-import techStackSchema, {
-  techStackFormData,
-} from "@/service/form-schema/techStack.schema";
 import {
   getAllHireOurDevelopers,
   updateHireOurDevelopers,

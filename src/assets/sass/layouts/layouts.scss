@@ -30,7 +30,6 @@
     }
 
     .menu-items {
-      margin-top: 40px;
       height: 87%;
 
       .menu-items {
@@ -40,7 +39,6 @@
         span {
           width: 20px;
           height: 20px;
-          padding-left: 40px;
           color: #777980;
         }
       }
@@ -129,6 +127,11 @@
             margin-right: 10px;
             border: 1px solid #777980;
           }
+
+          &.active {
+            font-weight: 700 !important;
+            color: #e31e24;
+          }
         }
 
         .add-category {
@@ -196,7 +199,7 @@
         a {
           border-left: 5px solid #e31e24;
           color: #e31e24;
-          font-weight: 700px;
+          font-weight: 700 !important;
           color: #e31e24;
         }
       }

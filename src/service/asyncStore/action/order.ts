@@ -1,12 +1,8 @@
-import { exportCSVType, getOrderPayloadType } from "@/types/order";
 import api from "..";
-import { getParamString } from "@/utils/helper";
 
-export async function getAllOrders(payload: getOrderPayloadType) {
+export async function getAllAboutUS(type: string) {
   try {
-    const response = api.get(
-      `/order/admin/getAllOrders?${getParamString(payload)}`
-    );
+    const response = api.get(`/about/getAllAboutUS/${type}`);
 
     return (await response).data;
   } catch (error: any) {
@@ -15,11 +11,10 @@ export async function getAllOrders(payload: getOrderPayloadType) {
   }
 }
 
-export async function getOrderById(id: string) {
+
+export async function addAboutUS(payload: FormData) {
   try {
-    const response = api.get(
-      `/order/getOrderById/${id}`
-    );
+    const response = api.post(`/about/addAboutUS`, payload);
 
     return (await response).data;
   } catch (error: any) {
@@ -28,11 +23,9 @@ export async function getOrderById(id: string) {
   }
 }
 
-export async function downloadOrdersCSV(payload: exportCSVType) {
+export async function deleteAboutUS(id: string) {
   try {
-    const response = api.get(
-      `/order/admin/downloadOrdersCSV?${getParamString(payload)}`
-    );
+    const response = api.delete(`/about/deleteAboutUS/${id}`);
 
     return (await response).data;
   } catch (error: any) {

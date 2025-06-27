@@ -24,3 +24,26 @@ export async function markAsRead(contactId: string) {
     throw error?.response?.data || error;
   }
 }
+
+export async function getAllJobApplication(payload: getBlogPayloadType) {
+  try {
+    const response = api.get(
+      `/contact/getAllJobApplication?${getParamString(payload)}`
+    );
+
+    return (await response).data;
+  } catch (error: any) {
+    console.log(error);
+    return error?.response?.data;
+  }
+}
+
+export async function markJobApplication(contactId: string) {
+  try {
+    const response = await api.put(`/contact/markJobApplication/${contactId}`);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error?.response?.data || error;
+  }
+}
