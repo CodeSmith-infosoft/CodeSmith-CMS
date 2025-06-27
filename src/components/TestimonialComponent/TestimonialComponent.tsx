@@ -66,6 +66,7 @@ const TestimonialComponent = ({ setTotalCount }: ProductPropType) => {
       title: "Description",
       dataIndex: "description",
       key: "description",
+      render: (value: string) => <p className="two-line-clamp">{value}</p>,
     },
     {
       title: "Rating",

@@ -130,3 +130,8 @@
   display: grid;
   grid-template-columns: auto auto auto;
 }
+
+.main-content {
+  height: 100vh;
+  overflow-y: scroll;
+}

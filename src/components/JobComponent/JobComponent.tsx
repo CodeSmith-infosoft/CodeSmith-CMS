@@ -3,7 +3,6 @@ import CommonTable from "../CommonComponents/CommonTable";
 import { BsEye } from "react-icons/bs";
 import {
   getAllJobApplication,
-  getAllTouch,
   markAsRead,
 } from "@/service/asyncStore/action/business";
 import { Modal } from "react-bootstrap";

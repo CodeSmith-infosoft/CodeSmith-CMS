@@ -9,7 +9,7 @@ import {
   getAllAboutUS,
   deleteAboutUS,
   addAboutUS,
-} from "@/service/asyncStore/action/order";
+} from "@/service/asyncStore/action/aboutUs";
 import ReactPlayer from "react-player";
 import AddAboutBanner from "./AddAboutBanner";
 import aboutFormSchema, {

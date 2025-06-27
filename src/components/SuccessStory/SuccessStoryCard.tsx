@@ -18,7 +18,6 @@ import successSchema, {
 } from "@/service/form-schema/success.schema";
 
 const SuccessStoryCard: React.FC = () => {
-  const [bannerData, setBannerData] = useState<bannerItemType[]>([]);
   const [mobileData, setMobileData] = useState<bannerItemType[]>([]);
   const [webData, setWebData] = useState<bannerItemType[]>([]);
   const [openBannerModal, setBannerModal] = useState(false);
@@ -71,8 +70,6 @@ const SuccessStoryCard: React.FC = () => {
       setMobileData(newMobileData);
 
       const combinedData: bannerItemType[] = [...newWebData, ...newMobileData];
-
-      setBannerData(combinedData);
       setTotalCount(combinedData.length);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -109,27 +106,27 @@ const SuccessStoryCard: React.FC = () => {
   // };
 
   const onSubmit = async (
-  data: successFormSchemaType,
-  setFileList: React.Dispatch<any>
-) => {
-  setIsDeleting(true);
-  const formData = new FormData();
-  formData.append("image", data.image);
-  // Remove this line: formData.append("type", data.type);
+    data: successFormSchemaType,
+    setFileList: React.Dispatch<any>
+  ) => {
+    setIsDeleting(true);
+    const formData = new FormData();
+    formData.append("image", data.image);
+    // Remove this line: formData.append("type", data.type);
 
-  addSuccess(formData, { type: data.type }) // Pass type as second parameter
-    .then((res) => {
-      const toast2 = res.success ? toast.success : toast.error;
-      toast2(res.message);
-      if (res.success) {
-        toggleModal(false);
-        setFileList(null);
-        reset();
-        getMarketPlaceData();
-      }
-    })
-    .finally(() => setIsDeleting(false));
-};
+    addSuccess(formData, data.type) // Pass type as second parameter
+      .then((res) => {
+        const toast2 = res.success ? toast.success : toast.error;
+        toast2(res.message);
+        if (res.success) {
+          toggleModal(false);
+          setFileList(null);
+          reset();
+          getMarketPlaceData();
+        }
+      })
+      .finally(() => setIsDeleting(false));
+  };
 
   const handleDelete = (item: bannerItemType) => {
     setIsEdit(item);
