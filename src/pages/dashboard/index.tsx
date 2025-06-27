@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "flatpickr/dist/themes/material_green.css";
 import State from "@/components/dashboard-components/State";
 import SalesGraph from "@/components/dashboard-components/SalesGraph";
@@ -6,15 +6,8 @@ import { Col, Row } from "react-bootstrap";
 import BestSellers from "@/components/dashboard-components/BestSellers";
 import RecentOrders from "@/components/dashboard-components/RecentOrders";
 import { DatePicker } from "rsuite";
-// import {
-//   getAllHomeBanner,
-//   getAllEnterpriseLogo,
-// } from "@/service/asyncStore/action/dashboard";
 import { dashboardStatsType } from "@/types/dashboardTypes";
 import { BsDownload } from "react-icons/bs";
-import { parseAndExportCSV } from "@/utils/helper";
-import { toast } from "react-toastify";
-import ExportDatePopup from "@/components/ExportDatePopup";
 
 const Dashboard = () => {
   const [filter, setFilter] = useState<{
@@ -28,33 +21,6 @@ const Dashboard = () => {
     null
   );
   const [isExportOpen, setIsExportOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // getHomePageData({
-    //   startDate: filter.startDate,
-    //   endDate: filter.endDate,
-    // }).then((res) => {
-    //   if (res.success) {
-    //     setDashboardData(res.data);
-    //   }
-    // });
-  }, [filter]);
-
-  const handleCsvExport = (startDate: Date | null, endDate: Date | null) => {
-    setLoading(true);
-    // exportHomePageCSV({ startDate, endDate })
-    //   .then((res) => {
-    //     if (!res.success) {
-    //       toast.error(res.message);
-    //     }
-    //     parseAndExportCSV(res, "Orders_Report");
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //     setIsExportOpen(false);
-    //   });
-  };
 
   return (
     <>
@@ -116,12 +82,6 @@ const Dashboard = () => {
         </Col>
       </Row>
       <RecentOrders />
-      <ExportDatePopup
-        isOpen={isExportOpen}
-        setIsOpen={() => setIsExportOpen(false)}
-        handleExport={handleCsvExport}
-        loading={loading}
-      />
     </>
   );
 };

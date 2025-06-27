@@ -29,6 +29,11 @@ import AddCaseStudy from "./pages/AddCaseStudy";
 import TeamMember from "./pages/TeamMember";
 import SingleTeamMember from "./pages/AddTeamMember";
 import Subscribers from "./pages/Subscribe";
+import Gallery from "./pages/Gallery";
+import GetInTouch from "./pages/GetInTouch";
+import Testimonial from "./pages/Testimonial";
+import SingleTestimonial from "./components/single-testimonial/SingleTestimonial";
+import BusinessInquiry from "./pages/BusinessInquiry";
 
 function App() {
   return (
@@ -61,6 +66,15 @@ function App() {
               <Route path="/social-media" element={<SocialMedia />} />
               <Route path="/home-banner" element={<HomeBanner />} />
               <Route path="/subscription" element={<Subscription />} /> */}
+              <Route path="/testimonial" element={<Testimonial />} />
+              <Route path="/business-inquiry" element={<BusinessInquiry />} />
+              <Route path="/add-testimonial" element={<SingleTestimonial />} />
+              <Route
+                path="/update-testimonial/:id"
+                element={<SingleTestimonial />}
+              />
+              <Route path="/get-in-touch" element={<GetInTouch />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/add-blog" element={<SingleBlogPage />} />
               <Route path="/update-blog/:id" element={<SingleBlogPage />} />

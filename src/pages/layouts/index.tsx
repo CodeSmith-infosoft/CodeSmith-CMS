@@ -84,13 +84,13 @@ const Layouts = ({ children }: LayoutProps) => {
                 </li>
                 <li
                   className={
-                    pathname === "/coupons" ||
-                    pathname.split("/")[1] === "coupon"
+                    pathname === "/testimonial" ||
+                    pathname.split("/")[1] === "testimonial"
                       ? "active-menu"
                       : ""
                   }
                 >
-                  <Link to="/coupons">
+                  <Link to="/testimonial">
                     <RiCoupon5Fill size={22} /> Testimonials
                   </Link>{" "}
                 </li>
@@ -109,16 +109,16 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/home-banner" ? "active-menu" : ""}
+                  className={pathname === "/business-inquiry" ? "active-menu" : ""}
                 >
-                  <Link to="home-banner">
+                  <Link to="business-inquiry">
                     <RiLayoutBottom2Fill size={22} /> Contact
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/subscription" ? "active-menu" : ""}
+                  className={pathname === "/gallery" ? "active-menu" : ""}
                 >
-                  <Link to="/subscription">
+                  <Link to="/gallery">
                     <MdSubscriptions size={22} /> Gallery
                   </Link>{" "}
                 </li>
@@ -137,9 +137,9 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/subscription" ? "active-menu" : ""}
+                  className={pathname === "/get-in-touch" ? "active-menu" : ""}
                 >
-                  <Link to="/subscription">
+                  <Link to="/get-in-touch">
                     <MdSubscriptions size={22} /> Get In Touch
                   </Link>{" "}
                 </li>

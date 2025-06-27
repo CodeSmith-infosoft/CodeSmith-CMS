@@ -1,4 +1,4 @@
-import { bannerFormSchemaType } from "@/service/form-schema/banner.schema";
+import { bannerFormSchemaType } from "@/service/form-schema/gallery.schema";
 import {
   Control,
   FieldErrors,
@@ -8,33 +8,33 @@ import {
   UseFormSetValue,
 } from "react-hook-form";
 
-export type bannerModalPropsType = {
+export type galleryModalPropsType = {
   openMarketModal: boolean;
   handleToggle: (isOpen: boolean, setFileList?: React.Dispatch<any>) => void;
   isLoading: boolean;
   control: Control<
     {
 
-      image: string | File;
+      images: string | File;
     },
     any,
     {
 
-      image: string | File;
+      images: string | File;
     }
   >;
   register: UseFormRegister<{
-    image: string | File;
+    images: string | File;
 
   }>;
   handleSubmit: UseFormHandleSubmit<
     {
 
-      image: string | File;
+      images: string | File;
     },
     {
 
-      image: string | File;
+      images: string | File;
     }
   >;
   onSubmit: (
@@ -43,20 +43,20 @@ export type bannerModalPropsType = {
   ) => void;
   errors: FieldErrors<{
 
-    image: string | File;
+    images: string | File;
   }>;
   item?: bannerItemType | null;
   setValue: UseFormSetValue<{
 
-    image: string | File;
+    images: string | File;
   }>;
   setError: UseFormSetError<{
-    image: string | File;
+    images: string | File;
 
   }>;
 };
 
 export type bannerItemType = {
   _id: string;
-  image: string;
+  images: string;
 }
