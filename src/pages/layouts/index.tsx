@@ -102,10 +102,10 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/social-media" ? "active-menu" : ""}
+                  className={pathname === "/success-story" ? "active-menu" : ""}
                 >
-                  <Link to="/social-media">
-                    <AiFillInstagram size={22} /> SuccessStory
+                  <Link to="/success-story">
+                    <AiFillInstagram size={22} /> Success Story
                   </Link>{" "}
                 </li>
                 <li

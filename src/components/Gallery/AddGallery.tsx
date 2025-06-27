@@ -11,7 +11,6 @@ const AddGallery = ({
   handleToggle,
   openMarketModal,
   control,
-  setError,
   handleSubmit,
   onSubmit,
   errors,
@@ -19,18 +18,26 @@ const AddGallery = ({
 }: galleryModalPropsType) => {
   const [fileList, setFileList] = useState<any | null>(null);
 
-  const handleUpload = async (newFileList: any, field: any) => {
-    const data = newFileList.at(-1);
-    const file = data?.originFileObj || data?.blobFile || data;
+  const handleFeildChange = async (newFileList: any[], field: any) => {
+    const formValue: File[] = []; 
 
-    if (!(file instanceof Blob)) {
-      return;
-    }
+    const updatedList = await Promise.all(
+      newFileList.map(async (fileWrapper: any) => {
+        if (!fileWrapper.url && fileWrapper.blobFile) {
+          const base64 = await toBase64(fileWrapper.blobFile);
+          formValue.push(fileWrapper.blobFile); 
+          return {
+            ...fileWrapper,
+            url: base64,
+            name: fileWrapper.name,
+          };
+        }
+        return fileWrapper;
+      })
+    );
 
-    setError("images", { message: `` });
-    const base64 = await toBase64(file);
-    field.onChange(file);
-    setFileList([{ ...data, url: base64 }]);
+    setFileList(updatedList); 
+    field.onChange(formValue);
   };
 
   return (
@@ -52,9 +59,9 @@ const AddGallery = ({
             control={control}
             render={({ field }) => (
               <Uploader
-                onChange={(fileList) => handleUpload(fileList, field)}
+                onChange={(fileList) => handleFeildChange(fileList, field)}
                 listType="picture-text"
-                multiple={true}
+                multiple
                 action=""
                 accept="image/*"
                 fileList={fileList}
@@ -72,6 +79,7 @@ const AddGallery = ({
               </Uploader>
             )}
           />
+
           <ErrorMessage message={errors.images?.message} />
         </div>
         <div className="btn-common">

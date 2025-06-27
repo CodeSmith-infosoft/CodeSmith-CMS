@@ -12,51 +12,32 @@ export type galleryModalPropsType = {
   openMarketModal: boolean;
   handleToggle: (isOpen: boolean, setFileList?: React.Dispatch<any>) => void;
   isLoading: boolean;
-  control: Control<
-    {
-
-      images: string | File;
-    },
-    any,
-    {
-
-      images: string | File;
-    }
-  >;
-  register: UseFormRegister<{
-    images: string | File;
-
+  control: Control<{
+    images: File[];
   }>;
-  handleSubmit: UseFormHandleSubmit<
-    {
-
-      images: string | File;
-    },
-    {
-
-      images: string | File;
-    }
-  >;
+  register: UseFormRegister<{
+    images: File[];
+  }>;
+  handleSubmit: UseFormHandleSubmit<{
+    images: File[];
+  }>;
   onSubmit: (
     data: bannerFormSchemaType,
     setFileList: React.Dispatch<any>
   ) => void;
   errors: FieldErrors<{
-
-    images: string | File;
+    images: File[];
   }>;
   item?: bannerItemType | null;
   setValue: UseFormSetValue<{
-
-    images: string | File;
+    images: File[];
   }>;
   setError: UseFormSetError<{
-    images: string | File;
-
+    images: File[];
   }>;
 };
 
 export type bannerItemType = {
   _id: string;
-  images: string;
-}
+  image: string;
+};

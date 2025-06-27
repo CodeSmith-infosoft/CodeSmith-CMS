@@ -25,6 +25,7 @@ import GetInTouch from "./pages/GetInTouch";
 import Testimonial from "./pages/Testimonial";
 import SingleTestimonial from "./components/single-testimonial/SingleTestimonial";
 import BusinessInquiry from "./pages/BusinessInquiry";
+import SuccessStory from "./pages/SuccessStory";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/" element={<HomeBanner />} />
               <Route path="/techstack" element={<Techstack />} />
+              <Route path="/success-story" element={<SuccessStory />} />
               <Route path="/testimonial" element={<Testimonial />} />
               <Route path="/business-inquiry" element={<BusinessInquiry />} />
               <Route path="/add-testimonial" element={<SingleTestimonial />} />
