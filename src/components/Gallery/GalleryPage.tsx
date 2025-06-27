@@ -36,10 +36,9 @@ const GalleryPage: React.FC = () => {
   } = useForm<bannerFormSchemaType>({
     resolver: zodResolver(bannerFormSchema),
     defaultValues: {
-      images: "",
+      images: [],
     },
   });
-
   useEffect(() => {
     getMarketPlaceData();
   }, []);
@@ -60,7 +59,7 @@ const GalleryPage: React.FC = () => {
     }
   };
 
-  console.log(getValues("images"))
+  console.log(getValues("images"));
 
   const onSubmit = async (
     data: bannerFormSchemaType,
@@ -68,9 +67,21 @@ const GalleryPage: React.FC = () => {
   ) => {
     setIsDeleting(true);
     const formData = new FormData();
-    formData.append("images", data.images);
 
-    console.log(formData)
+    // Handle array of files properly
+    if (Array.isArray(data.images)) {
+      data.images.forEach((file) => {
+        formData.append(`images`, file);
+      });
+    } else {
+      formData.append("images", data.images);
+    }
+
+    console.log("FormData entries:");
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+    }
+
     addBanner(formData)
       .then((res) => {
         const toast2 = res.success ? toast.success : toast.error;
@@ -136,7 +147,7 @@ const GalleryPage: React.FC = () => {
                   <div className="logo-section">
                     <div className="logo-container blinkit-logo">
                       <img
-                        src={import.meta.env.VITE_IMAGE_DOMAIN + banner.images}
+                        src={import.meta.env.VITE_IMAGE_DOMAIN + banner.image}
                       />
                     </div>
                   </div>
@@ -181,8 +192,8 @@ const GalleryPage: React.FC = () => {
         title="Delete Banner"
         message={
           <>
-            Are you sure you want to delete this <b>Gallery Banner</b>? This action
-            cannot be undone.
+            Are you sure you want to delete this <b>Gallery Banner</b>? This
+            action cannot be undone.
           </>
         }
         confirmText="Delete"

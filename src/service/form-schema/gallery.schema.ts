@@ -1,10 +1,7 @@
 import { z } from "zod";
 
 export const bannerFormSchema = z.object({
-  images: z.union([
-    z.instanceof(File),
-    z.string().url('Images is required')
-  ]),
+  images: z.array(z.instanceof(File)).min(1, "At least one image is required"),
 });
 
 export type bannerFormSchemaType = z.infer<typeof bannerFormSchema>;
