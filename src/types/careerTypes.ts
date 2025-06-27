@@ -1,23 +1,22 @@
-export type addCouponPayloadType = {
-  code: string;
-  description: string;
-  discountType: DiscountType;
-  discountValue: number;
-  validFrom: string;
-  validTo: string;
-  minPurchase?: number;
-  maxPurchase?: number;
-  productId?: string;
-};
+export interface addCareerType {
+  techStackId: string;
+  jobTitle: string;
+  qualification: string;
+  location: string;
+  experience: string;
+  vacancy: number;
+  ofcTime: string;
+  role: string[];
+  skills: string[];
+  benefits: string[];
+}
+
 
 export type DiscountType = "percentage" | "fixed";
 
-export type getCouponPayloadType = {
+export type getCareerPayloadType = {
   page?: number;
   limit?: number;
-  search?: string;
-  isActive?: boolean;
-  isExpire?: boolean;
 };
 
 export type CouponDocumentType = {

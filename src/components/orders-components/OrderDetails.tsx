@@ -12,7 +12,7 @@ import { CgFileDocument } from "react-icons/cg";
 import { useParams } from "react-router-dom";
 import { orderDataType, orderItemType } from "@/types/order";
 import { getOrderById } from "@/service/asyncStore/action/order";
-import { ProductDataType } from "@/types/productDataTypes";
+import { ProductDataType } from "@/types/hireDevTypes";
 import CommonTable from "../CommonComponents/CommonTable";
 import { formatUserAddress } from "@/utils/helper";
 import PageTitle from "../CommonComponents/PageTitle";

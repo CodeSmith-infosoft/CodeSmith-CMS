@@ -62,23 +62,23 @@ const Layouts = ({ children }: LayoutProps) => {
                 </li>
                 <li
                   className={
-                    pathname === "/orders" || pathname.split("/")[1] === "order"
+                    pathname === "/career" || pathname.split("/")[1] === "career"
                       ? "active-menu"
                       : ""
                   }
                 >
-                  <Link to="/orders">
+                  <Link to="/career">
                     <GiCube size={22} /> Career
                   </Link>{" "}
                 </li>
                 <li
                   className={
-                    pathname === "/users" || pathname.split("/")[1] === "user"
+                    pathname === "/portfolio" || pathname.split("/")[1] === "portfolio"
                       ? "active-menu"
                       : ""
                   }
                 >
-                  <Link to="/users">
+                  <Link to="/portfolio">
                     <FaUserCircle size={22} /> Portfolio
                   </Link>{" "}
                 </li>
@@ -151,9 +151,9 @@ const Layouts = ({ children }: LayoutProps) => {
                   </Link>{" "}
                 </li>
                 <li
-                  className={pathname === "/subscription" ? "active-menu" : ""}
+                  className={pathname === "/hire-developer" ? "active-menu" : ""}
                 >
-                  <Link to="/subscription">
+                  <Link to="/hire-developer">
                     <MdSubscriptions size={22} /> HireOurDeveloper
                   </Link>{" "}
                 </li>

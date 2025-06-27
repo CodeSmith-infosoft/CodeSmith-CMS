@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import {
   deleteCouponById,
   getAllCouponList,
-} from "@/service/asyncStore/action/coupon";
-import { CouponDocumentType, getCouponPayloadType } from "@/types/couponTypes";
+} from "@/service/asyncStore/action/career";
+import { CouponDocumentType, getCouponPayloadType } from "@/types/careerTypes";
 import { MdOutlineSell } from "react-icons/md";
 import { toast } from "react-toastify";
 import ConfirmationModal from "../ConfirmationModal";

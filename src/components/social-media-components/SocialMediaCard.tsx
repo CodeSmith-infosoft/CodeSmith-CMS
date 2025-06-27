@@ -14,7 +14,7 @@ import {
   deleteInstaShop,
   getAllInstaShop,
   updateInstaShop,
-} from "@/service/asyncStore/action/instaShop";
+} from "@/service/asyncStore/action/portfolio";
 import { socialMediaItemType } from "@/types/socialMediaDataTypes";
 import AddSocialMedia from "./AddSocialMedia";
 

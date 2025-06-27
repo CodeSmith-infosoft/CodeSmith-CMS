@@ -7,7 +7,6 @@ import {
   UseFormSetError,
   UseFormSetValue,
 } from "react-hook-form";
-import { TechStackItemType } from "./techStackTypes";
 
 export type bannerModalPropsType = {
   openMarketModal: boolean;

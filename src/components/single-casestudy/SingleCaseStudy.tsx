@@ -61,6 +61,7 @@ const SingleCaseStudy = () => {
     reset,
     watch,
     getValues,
+    clearErrors,
   } = useForm<caseStudyFormSchemaType>({
     resolver: zodResolver(addCaseStudySchema),
     defaultValues: {
@@ -119,6 +120,8 @@ const SingleCaseStudy = () => {
       }
     }
   }, [conclusionEdit]);
+
+  console.log(errors, getValues());
 
   const {
     fields: solutionFields,
@@ -278,6 +281,7 @@ const SingleCaseStudy = () => {
       const current = getValues("problem") || [];
       setValue("problem", [...current, currentProblem]);
       setCurrentProblem("");
+      clearErrors("problem")
     }
   };
 
@@ -307,6 +311,7 @@ const SingleCaseStudy = () => {
       const current = getValues("devProcess") || [];
       setValue("devProcess", [...current, currentDev]);
       setCurrentDev("");
+      clearErrors("devProcess")
     }
   };
 
@@ -336,6 +341,7 @@ const SingleCaseStudy = () => {
       const current = getValues("challenges") || [];
       setValue("challenges", [...current, currentChallenge]);
       setCurrentChallenge("");
+      clearErrors("challenges")
     }
   };
 
@@ -365,6 +371,7 @@ const SingleCaseStudy = () => {
       const current = getValues("conclusion") || [];
       setValue("conclusion", [...current, currentConclusion]);
       setCurrentConclusion("");
+      clearErrors("conclusion")
     }
   };
 
@@ -632,67 +639,75 @@ const SingleCaseStudy = () => {
                   </div>
 
                   {watch("problem").map((field, index) => (
-                    <div
-                      key={field}
-                      className="feature-item d-flex align-items-center mt-2 gap-2"
-                    >
-                      <textarea
-                        value={
-                          problemEdit === index
-                            ? editProblemValue
-                            : getValues(`problem.${index}`)
-                        }
-                        disabled={problemEdit !== index}
-                        ref={(el) => {
-                          if (el) {
-                            problemRefs.current[index] = el;
-                          } else {
-                            delete problemRefs.current[index];
+                    <>
+                      <div
+                        key={field}
+                        className="feature-item d-flex align-items-center mt-2 gap-2"
+                      >
+                        <textarea
+                          value={
+                            problemEdit === index
+                              ? editProblemValue
+                              : getValues(`problem.${index}`)
                           }
-                        }}
-                        onChange={(e) => setEditProblemValue(e.target.value)}
+                          disabled={problemEdit !== index}
+                          ref={(el) => {
+                            if (el) {
+                              problemRefs.current[index] = el;
+                            } else {
+                              delete problemRefs.current[index];
+                            }
+                          }}
+                          onChange={(e) => {
+                            setEditProblemValue(e.target.value);
+                            clearErrors("problem");
+                          }}
+                        />
+                        {problemEdit === index ? (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => handleProblemEdit(index)}
+                            >
+                              Save
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={handleCancelProblemEdit}
+                            >
+                              Cancel
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => {
+                                setProblemEdit(index);
+                                setEditProblemValue(
+                                  getValues(`problem.${index}`)
+                                );
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => removeProblem(index)}
+                            >
+                              Remove
+                            </button>
+                          </>
+                        )}
+                      </div>
+                      <ErrorMessage
+                        message={errors.problem?.[index]?.message}
                       />
-                      {problemEdit === index ? (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => handleProblemEdit(index)}
-                          >
-                            Save
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={handleCancelProblemEdit}
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => {
-                              setProblemEdit(index);
-                              setEditProblemValue(
-                                getValues(`problem.${index}`)
-                              );
-                            }}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={() => removeProblem(index)}
-                          >
-                            Remove
-                          </button>
-                        </>
-                      )}
-                    </div>
+                    </>
                   ))}
                   <ErrorMessage message={errors.problem?.message} />
                 </Card>
@@ -865,66 +880,76 @@ const SingleCaseStudy = () => {
                   </div>
 
                   {watch("devProcess").map((field, index) => (
-                    <div
-                      key={field}
-                      className="feature-item d-flex align-items-center mt-2 gap-2"
-                    >
-                      <input
-                        type="text"
-                        value={
-                          devEdit === index
-                            ? editDevValue
-                            : getValues(`devProcess.${index}`)
-                        }
-                        disabled={devEdit !== index}
-                        ref={(el) => {
-                          if (el) {
-                            devRefs.current[index] = el;
-                          } else {
-                            delete devRefs.current[index];
+                    <>
+                      <div
+                        key={field}
+                        className="feature-item d-flex align-items-center mt-2 gap-2"
+                      >
+                        <input
+                          type="text"
+                          value={
+                            devEdit === index
+                              ? editDevValue
+                              : getValues(`devProcess.${index}`)
                           }
-                        }}
-                        onChange={(e) => setEditDevValue(e.target.value)}
+                          disabled={devEdit !== index}
+                          ref={(el) => {
+                            if (el) {
+                              devRefs.current[index] = el;
+                            } else {
+                              delete devRefs.current[index];
+                            }
+                          }}
+                          onChange={(e) => {
+                            setEditDevValue(e.target.value);
+                            clearErrors("devProcess");
+                          }}
+                        />
+                        {devEdit === index ? (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => handleDevEdit(index)}
+                            >
+                              Save
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={handleCancelDevEdit}
+                            >
+                              Cancel
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => {
+                                setDevEdit(index);
+                                setEditDevValue(
+                                  getValues(`devProcess.${index}`)
+                                );
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => removeDev(index)}
+                            >
+                              Remove
+                            </button>
+                          </>
+                        )}
+                      </div>
+                      <ErrorMessage
+                        message={errors.devProcess?.[index]?.message}
                       />
-                      {devEdit === index ? (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => handleDevEdit(index)}
-                          >
-                            Save
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={handleCancelDevEdit}
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => {
-                              setDevEdit(index);
-                              setEditDevValue(getValues(`devProcess.${index}`));
-                            }}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={() => removeDev(index)}
-                          >
-                            Remove
-                          </button>
-                        </>
-                      )}
-                    </div>
+                    </>
                   ))}
                   <ErrorMessage message={errors.devProcess?.message} />
                 </Card>
@@ -947,67 +972,75 @@ const SingleCaseStudy = () => {
                   </div>
 
                   {watch("challenges").map((field, index) => (
-                    <div
-                      key={field}
-                      className="feature-item d-flex align-items-center mt-2 gap-2"
-                    >
-                      <textarea
-                        value={
-                          challengeEdit === index
-                            ? editChallengeValue
-                            : getValues(`challenges.${index}`)
-                        }
-                        disabled={challengeEdit !== index}
-                        ref={(el) => {
-                          if (el) {
-                            challengeRefs.current[index] = el;
-                          } else {
-                            delete challengeRefs.current[index];
+                    <>
+                      <div
+                        key={field}
+                        className="feature-item d-flex align-items-center mt-2 gap-2"
+                      >
+                        <textarea
+                          value={
+                            challengeEdit === index
+                              ? editChallengeValue
+                              : getValues(`challenges.${index}`)
                           }
-                        }}
-                        onChange={(e) => setEditChallengeValue(e.target.value)}
+                          disabled={challengeEdit !== index}
+                          ref={(el) => {
+                            if (el) {
+                              challengeRefs.current[index] = el;
+                            } else {
+                              delete challengeRefs.current[index];
+                            }
+                          }}
+                          onChange={(e) => {
+                            setEditChallengeValue(e.target.value);
+                            clearErrors("challenges");
+                          }}
+                        />
+                        {challengeEdit === index ? (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => handleChallengeEdit(index)}
+                            >
+                              Save
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={handleCancelChallengeEdit}
+                            >
+                              Cancel
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => {
+                                setChallengeEdit(index);
+                                setEditChallengeValue(
+                                  getValues(`challenges.${index}`)
+                                );
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => removeChallenge(index)}
+                            >
+                              Remove
+                            </button>
+                          </>
+                        )}
+                      </div>
+                      <ErrorMessage
+                        message={errors.challenges?.[index]?.message}
                       />
-                      {challengeEdit === index ? (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => handleChallengeEdit(index)}
-                          >
-                            Save
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={handleCancelChallengeEdit}
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => {
-                              setChallengeEdit(index);
-                              setEditChallengeValue(
-                                getValues(`challenges.${index}`)
-                              );
-                            }}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={() => removeChallenge(index)}
-                          >
-                            Remove
-                          </button>
-                        </>
-                      )}
-                    </div>
+                    </>
                   ))}
                   <ErrorMessage message={errors.challenges?.message} />
                 </Card>
@@ -1030,67 +1063,75 @@ const SingleCaseStudy = () => {
                   </div>
 
                   {watch("conclusion").map((field, index) => (
-                    <div
-                      key={field}
-                      className="feature-item d-flex align-items-center mt-2 gap-2"
-                    >
-                      <textarea
-                        value={
-                          conclusionEdit === index
-                            ? editConclusionValue
-                            : getValues(`conclusion.${index}`)
-                        }
-                        disabled={conclusionEdit !== index}
-                        ref={(el) => {
-                          if (el) {
-                            conclusionRefs.current[index] = el;
-                          } else {
-                            delete conclusionRefs.current[index];
+                    <>
+                      <div
+                        key={field}
+                        className="feature-item d-flex align-items-center mt-2 gap-2"
+                      >
+                        <textarea
+                          value={
+                            conclusionEdit === index
+                              ? editConclusionValue
+                              : getValues(`conclusion.${index}`)
                           }
-                        }}
-                        onChange={(e) => setEditConclusionValue(e.target.value)}
+                          disabled={conclusionEdit !== index}
+                          ref={(el) => {
+                            if (el) {
+                              conclusionRefs.current[index] = el;
+                            } else {
+                              delete conclusionRefs.current[index];
+                            }
+                          }}
+                          onChange={(e) => {
+                            setEditConclusionValue(e.target.value);
+                            clearErrors("conclusion");
+                          }}
+                        />
+                        {conclusionEdit === index ? (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => handleConclusionEdit(index)}
+                            >
+                              Save
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={handleCancelConclusionEdit}
+                            >
+                              Cancel
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-success"
+                              onClick={() => {
+                                setConclusionEdit(index);
+                                setEditConclusionValue(
+                                  getValues(`conclusion.${index}`)
+                                );
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => removeConclusion(index)}
+                            >
+                              Remove
+                            </button>
+                          </>
+                        )}
+                      </div>
+                      <ErrorMessage
+                        message={errors.conclusion?.[index]?.message}
                       />
-                      {conclusionEdit === index ? (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => handleConclusionEdit(index)}
-                          >
-                            Save
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={handleCancelConclusionEdit}
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-success"
-                            onClick={() => {
-                              setConclusionEdit(index);
-                              setEditConclusionValue(
-                                getValues(`conclusion.${index}`)
-                              );
-                            }}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={() => removeConclusion(index)}
-                          >
-                            Remove
-                          </button>
-                        </>
-                      )}
-                    </div>
+                    </>
                   ))}
                   <ErrorMessage message={errors.conclusion?.message} />
                 </Card>

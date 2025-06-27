@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 const solutionSchema = z.object({
-  h: z.string().min(1, "Heading is required"),
-  p: z.string().min(1, "Paragraph is required"),
+  h: z.string().min(1, "Heading cannot be empty"),
+  p: z.string().min(1, "Paragraph cannot be empty"),
 });
 
 const typographySchema = z.object({
@@ -18,13 +18,23 @@ export const addCaseStudySchema = z.object({
   industry: z.string().min(1, "Industry is required"),
 
   // JSON stringified arrays
-  tech: z.array(z.string().min(1, "Tech is required")),
-  devProcess: z.array(z.string().min(1, "Step is required")),
-  problem: z.array(z.string().min(1, "Problem is required")),
-  challenges: z.array(z.string().min(1, "Challenges is required")),
-  conclusion: z.array(z.string().min(1, "Conclusion is required")),
+  tech: z
+    .array(z.string().min(1, "Tech cannot be empty"))
+    .min(1, "At least one tech is required"),
+  devProcess: z
+    .array(z.string().min(1, "Step cannot be empty"))
+    .min(1, "At least one dev process is required"),
+  problem: z
+    .array(z.string().min(1, "Problem cannot be empty"))
+    .min(1, "At least one problem is required"),
+  challenges: z
+    .array(z.string().min(1, "Challenges cannot be empty"))
+    .min(1, "At least one challenge is required"),
+  conclusion: z
+    .array(z.string().min(1, "Conclusion cannot be empty"))
+    .min(1, "At least one conclusion is required"),
 
-  solution: z.array(solutionSchema).min(1, "At least one feature is required"),
+  solution: z.array(solutionSchema).min(1, "At least one solution is required"),
 
   // Files handled via multer
   companyLogo: z.union([

@@ -27,10 +27,10 @@ import {
   addSingleProduct,
   getProductByID,
   updateProduct,
-} from "@/service/asyncStore/action/product";
+} from "@/service/asyncStore/action/hireDev";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import { ProductVariantType } from "@/types/productDataTypes";
+import { ProductVariantType } from "@/types/hireDevTypes";
 
 type SingleProductFormData = z.infer<typeof SingleProductSchema>;
 

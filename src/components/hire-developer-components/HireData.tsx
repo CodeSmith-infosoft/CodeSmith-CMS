@@ -5,24 +5,29 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import ConfirmationModal from "../ConfirmationModal";
-import AddTechstack from "./AddTechstack";
-import {
-  addTechStack,
-  deleteTechStack,
-  getAllTechStack,
-  updateTechStack,
-} from "@/service/asyncStore/action/techStack";
+import AddTechstack from "./AddHire";
 import CommonTable from "../CommonComponents/CommonTable";
 import { HiDotsVertical } from "react-icons/hi";
 import { TechStackItemType } from "@/types/techStackTypes";
 import techStackSchema, {
   techStackFormData,
 } from "@/service/form-schema/techStack.schema";
+import {
+  getAllHireOurDevelopers,
+  updateHireOurDevelopers,
+  addHireOurDeveloper,
+  deleteHireOurDevelopers,
+} from "@/service/asyncStore/action/hireDev";
+import { HireDevItemType } from "@/types/hireDevTypes";
+import addHireDevSchema, {
+  hireDevFormSchemaType,
+} from "@/service/form-schema/hiredev.schema";
+import AddHire from "./AddHire";
 
-const TechstachData: React.FC = () => {
-  const [techstachData, setTechstachData] = useState<TechStackItemType[]>([]);
+const HireData: React.FC = () => {
+  const [techstachData, setTechstachData] = useState<HireDevItemType[]>([]);
   const [openTechstachModal, setTechstachModal] = useState(false);
-  const [isEdit, setIsEdit] = useState<TechStackItemType | null>(null);
+  const [isEdit, setIsEdit] = useState<HireDevItemType | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
@@ -43,12 +48,13 @@ const TechstachData: React.FC = () => {
     formState: { errors },
     reset,
     setError,
-  } = useForm<techStackFormData>({
-    resolver: zodResolver(techStackSchema),
+    getValues,
+  } = useForm<hireDevFormSchemaType>({
+    resolver: zodResolver(addHireDevSchema),
     defaultValues: {
-      name: "",
-      bgColor: "",
-      textColor: "",
+      logo: "",
+      title: "",
+      url: "",
     },
   });
 
@@ -56,33 +62,40 @@ const TechstachData: React.FC = () => {
     getMarketPlaceData();
   }, []);
 
+  console.log(getValues());
+
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "Bg Color",
-      dataIndex: "bgColor",
-      key: "bgColor",
-      render: (value: string) => (
-        <span className="d-flex gap-2 align-items-center">
-          <div style={{ backgroundColor: value }} className="color-preview" />
-          {value}
-        </span>
+      // title: <div className='d-flex align-items-center'><input className='input-box me-2' type="checkbox" />Products</div>,
+      title: "Logo",
+      dataIndex: "logo",
+      key: "logo",
+      cellClass: "cursor-pointer min-w-176",
+      render: (value: string, data: HireDevItemType) => (
+        <>
+          <div
+            className="d-flex align-items-center"
+            onClick={() => handleEdit(data)}
+          >
+            <div className="product">
+              <img
+                src={import.meta.env.VITE_IMAGE_DOMAIN + value}
+                alt="avatar"
+              />
+            </div>
+          </div>
+        </>
       ),
     },
     {
-      title: "Text Color",
-      dataIndex: "textColor",
-      key: "textColor",
-      render: (value: string) => (
-        <span className="d-flex gap-2 align-items-center">
-          <div style={{ backgroundColor: value }} className="color-preview" />
-          {value}
-        </span>
-      ),
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "Url",
+      dataIndex: "url",
+      key: "url",
     },
     {
       title: "Action",
@@ -129,37 +142,53 @@ const TechstachData: React.FC = () => {
   ];
 
   const getMarketPlaceData = () => {
-    getAllTechStack({ page: pagination.page, limit: pagination.limit }).then(
-      (res) => {
-        if (res.success) {
-          setTechstachData(res.data.records);
-          setPagination({
-            page: res.data.page,
-            limit: 10,
-            totalPages: res.data.totalPages,
-            totalRecords: res.data.totalRecords,
-          });
-          setTotalCount(res.data.totalRecords || 0);
-        }
+    getAllHireOurDevelopers({
+      page: pagination.page,
+      limit: pagination.limit,
+    }).then((res) => {
+      if (res.success) {
+        setTechstachData(res.data.records);
+        setPagination({
+          page: res.data.page,
+          limit: 10,
+          totalPages: res.data.totalPages,
+          totalRecords: res.data.totalRecords,
+        });
+        setTotalCount(res.data.totalRecords || 0);
       }
-    );
+    });
   };
 
-  const handleEdit = (item: TechStackItemType) => {
+  const handleEdit = (item: HireDevItemType) => {
     setIsEdit(item);
     toggleModal(true);
     setShow("");
   };
 
-  const toggleModal = (isOpen: boolean) => {
+  const toggleModal = (isOpen: boolean, setFileList?: React.Dispatch<any>) => {
     reset();
     setTechstachModal(isOpen);
+    if (!isOpen) {
+      setIsEdit(null);
+    }
+    if (setFileList) {
+      setFileList(null);
+    }
   };
 
-  const onSubmit = async (data: techStackFormData) => {
+  const onSubmit = async (
+    data: hireDevFormSchemaType,
+    setFileList: React.Dispatch<any>
+  ) => {
     setIsDeleting(true);
+    const formData = new FormData();
+    formData.append("logo", data.logo);
+    formData.append("title", data.title);
+    formData.append("url", data.url);
     const action = () =>
-      isEdit?._id ? updateTechStack(data, isEdit._id) : addTechStack(data);
+      isEdit?._id
+        ? updateHireOurDevelopers(formData, isEdit._id)
+        : addHireOurDeveloper(formData);
     action()
       .then((res) => {
         const toast2 = res.success ? toast.success : toast.error;
@@ -168,12 +197,13 @@ const TechstachData: React.FC = () => {
           toggleModal(false);
           reset();
           getMarketPlaceData();
+          setFileList(null);
         }
       })
       .finally(() => setIsDeleting(false));
   };
 
-  const handleDelete = (item: TechStackItemType) => {
+  const handleDelete = (item: HireDevItemType) => {
     setIsEdit(item);
     setShowDeleteModal(true);
   };
@@ -183,12 +213,12 @@ const TechstachData: React.FC = () => {
     setIsDeleting(true);
 
     try {
-      deleteTechStack(isEdit._id).then((res) => {
+      deleteHireOurDevelopers(isEdit._id).then((res) => {
         const toast2 = res.success ? toast.success : toast.error;
         toast2(res.message);
 
         if (res.success) {
-          setTechstachData((prev) => prev.filter((p) => p._id !== isEdit._id));
+          getMarketPlaceData();
         }
       });
     } catch (error) {
@@ -210,8 +240,8 @@ const TechstachData: React.FC = () => {
   return (
     <>
       <PageTitle
-        title="Tech Stack"
-        button="Tech Stack"
+        title="Hire Developer"
+        button="Hire Developer"
         openCategories={toggleModal}
         totalCount={totalCount}
       />
@@ -227,7 +257,7 @@ const TechstachData: React.FC = () => {
           onPageChange={setPagination}
         />
       </section>
-      <AddTechstack
+      <AddHire
         handleToggle={toggleModal}
         openMarketModal={openTechstachModal}
         control={control}
@@ -260,4 +290,4 @@ const TechstachData: React.FC = () => {
   );
 };
 
-export default TechstachData;
+export default HireData;

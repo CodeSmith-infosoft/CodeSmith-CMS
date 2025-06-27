@@ -5,9 +5,9 @@ import {
   deleteProduct,
   getAllProductsList,
   toggleActiveStateById,
-} from "@/service/asyncStore/action/product";
+} from "@/service/asyncStore/action/hireDev";
 import { Overlay, OverlayTrigger, Table, Tooltip } from "react-bootstrap";
-import { ProductDataType, ProductVariantType } from "@/types/productDataTypes";
+import { ProductDataType, ProductVariantType } from "@/types/hireDevTypes";
 import ConfirmationModal from "../ConfirmationModal";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";

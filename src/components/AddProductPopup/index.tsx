@@ -1,4 +1,4 @@
-import { uploadBulkProductsFile } from "@/service/asyncStore/action/product";
+import { uploadBulkProductsFile } from "@/service/asyncStore/action/hireDev";
 import { useRef } from "react";
 import { Modal } from "react-bootstrap";
 import { FaFileCsv } from "react-icons/fa";

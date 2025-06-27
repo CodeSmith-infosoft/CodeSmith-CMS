@@ -6,13 +6,13 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { addCoupon, getCouponById, updateCouponById } from "@/service/asyncStore/action/coupon";
+import { addCoupon, getCouponById, updateCouponById } from "@/service/asyncStore/action/career";
 import { Card, Col, Form, Row } from "react-bootstrap";
 import ErrorMessage from "../ErrorMessage";
 import { DatePicker } from "rsuite";
 import { PiMoney } from "react-icons/pi";
 import { BsBag } from "react-icons/bs";
-import { addCouponPayloadType } from "@/types/couponTypes";
+import { addCouponPayloadType } from "@/types/careerTypes";
 import { toast } from "react-toastify";
 
 const CouponForm = () => {

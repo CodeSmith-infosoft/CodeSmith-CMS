@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { getPopularProductList } from "@/service/asyncStore/action/product";
-import { ProductDataType } from "@/types/productDataTypes";
+import { getPopularProductList } from "@/service/asyncStore/action/hireDev";
+import { ProductDataType } from "@/types/hireDevTypes";
 import { useNavigate } from "react-router-dom";
 
 const BestSellers = () => {

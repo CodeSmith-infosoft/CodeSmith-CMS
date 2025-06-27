@@ -1,64 +1,69 @@
-import { toBase64 } from "@/utils/helper";
-import { useState } from "react";
 import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Modal,
 } from "react-bootstrap";
-import { Controller } from "react-hook-form";
 import { Button } from "rsuite";
-import Uploader from "rsuite/esm/Uploader";
+import { Controller } from "react-hook-form";
 import ErrorMessage from "../ErrorMessage";
-import { bannerModalPropsType } from "@/types/homeBannerTypes";
+import { FaAngleDown } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { hireDevModalPropsType } from "@/types/hireDevTypes";
+import { Uploader } from "rsuite";
+import { toast } from "react-toastify";
+import { toBase64 } from "@/utils/helper";
 
-const AddEnterprise = ({
+const AddHire = ({
   handleToggle,
   openMarketModal,
   control,
-  setError,
   handleSubmit,
   onSubmit,
   errors,
-}: bannerModalPropsType) => {
+  item,
+  register,
+  setValue,
+  setError,
+}: hireDevModalPropsType) => {
   const [fileList, setFileList] = useState<any | null>(null);
 
+  useEffect(() => {
+    if (item?._id) {
+      setValue("logo", import.meta.env.VITE_IMAGE_DOMAIN + item.logo);
+      setValue("title", item.title);
+      setValue("url", item.url);
+      setFileList([
+        {
+          url: import.meta.env.VITE_IMAGE_DOMAIN + item.logo,
+          name: item.logo.split("/").at(-1),
+        },
+      ]);
+    }
+
+    if (!openMarketModal) {
+      setValue("logo", "");
+      setValue("title", "");
+      setValue("url", "");
+    }
+  }, [item, openMarketModal]);
+
   const handleUpload = async (newFileList: any, field: any) => {
-    const data = newFileList[0];
+    const data = newFileList.at(-1);
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
       return;
     }
 
-    const image = new Image();
-    const objectUrl = URL.createObjectURL(file);
-
-    const dimensionsValid = await new Promise<boolean>((resolve) => {
-      image.onload = () => {
-        const isValid = image.height === 70;
-        URL.revokeObjectURL(objectUrl);
-        resolve(isValid);
-      };
-      image.onerror = () => {
-        URL.revokeObjectURL(objectUrl);
-        resolve(false);
-      };
-      image.src = objectUrl;
-    });
-
-    if (!dimensionsValid) {
-      setFileList([]); // Reset preview
-      field.onChange(""); // Clear form field value
-      setError("image", {
-        message: `Image must be exactly 70 pixels height.`,
-      });
-      // toast.error("Only images with 1440x400 resolution are allowed.");
-      return;
-    }
-
-    setError("image", { message: `` }); // clear error
+    setError("logo", { message: `` }); // clear error
     const base64 = await toBase64(file);
     field.onChange(file);
     setFileList([{ ...data, url: base64 }]);
   };
+
+  console.log(fileList);
 
   return (
     <Modal
@@ -70,12 +75,12 @@ const AddEnterprise = ({
       centered
     >
       <Modal.Body>
-        <h2>Add Enterprise Logo</h2>
+        <h2>{item?._id ? "Update" : "Add"} Hire Dev</h2>
 
-        <p>Image</p>
+        <p>Logo</p>
         <div className="img-upload rsuite-image-upload-field">
           <Controller
-            name="image"
+            name="logo"
             control={control}
             render={({ field }) => (
               <Uploader
@@ -99,8 +104,25 @@ const AddEnterprise = ({
               </Uploader>
             )}
           />
-          <ErrorMessage message={errors.image?.message} />
+          <ErrorMessage message={errors.logo?.message} />
         </div>
+
+        <p>Title</p>
+        <input
+          type="text"
+          placeholder="Hire Developer Title..."
+          {...register("title")}
+        />
+        <ErrorMessage message={errors.title?.message} />
+
+        <p>URL</p>
+        <input
+          type="text"
+          placeholder="Hire Developer Link..."
+          {...register("url")}
+        />
+        <ErrorMessage message={errors.url?.message} />
+
         <div className="btn-common">
           <button
             className="btn-cencal"
@@ -112,7 +134,7 @@ const AddEnterprise = ({
             className="me-0 btn-add"
             onClick={handleSubmit((data) => onSubmit(data, setFileList))}
           >
-            Add Enterprise Logo
+            {item?._id ? "Update" : "Add"} Hire Dev
           </button>
         </div>
       </Modal.Body>
@@ -120,4 +142,4 @@ const AddEnterprise = ({
   );
 };
 
-export default AddEnterprise;
+export default AddHire;

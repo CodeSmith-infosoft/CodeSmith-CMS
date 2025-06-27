@@ -1,26 +1,12 @@
 import "@/assets/sass/index.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/dashboard";
-import ProductsPage from "./pages/products";
-import SingleProductPage from "./pages/single-product";
-import CategoriesPage from "./pages/Categories";
-import OrdersPage from "./pages/orders";
 import { Slide, ToastContainer } from "react-toastify";
 import RequireAuth from "./routes/RequireAuth";
 import RejectAuth from "./routes/RejectAuth";
 import Login from "./pages/Login";
 import { MainProvider } from "./context/mainContext";
-import SubCategoriesPage from "./pages/Categories/subCategory";
-import OrderDetails from "./components/orders-components/OrderDetails";
-import User from "./pages/User";
-import UserDetails from "./pages/UserDetails";
-import CouponDetails from "./pages/CouponDetails";
-import AddCoupon from "./pages/AddCoupon";
-import MarketplaceManager from "./pages/MarketplaceManager";
-import SocialMedia from "./pages/SocialMedia";
 import HomeBanner from "./pages/HomeBanner";
-import Subscription from "./pages/Subscription";
 import BlogPage from "./pages/Blog";
 import SingleBlogPage from "./pages/AddBlog";
 import Techstack from "./pages/Techstack";
@@ -29,6 +15,11 @@ import AddCaseStudy from "./pages/AddCaseStudy";
 import TeamMember from "./pages/TeamMember";
 import SingleTeamMember from "./pages/AddTeamMember";
 import Subscribers from "./pages/Subscribe";
+import CareerPage from "./pages/Career";
+import AddCareer from "./pages/AddCareer";
+import Portfolio from "./pages/Portfolio";
+import AddPortfolio from "./pages/AddPortfolio";
+import HireDeveloper from "./pages/HireDeveloper";
 
 function App() {
   return (
@@ -39,28 +30,6 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/" element={<HomeBanner />} />
               <Route path="/techstack" element={<Techstack />} />
-              {/* <Route path="/product" element={<ProductsPage />} />
-              <Route path="/add-product" element={<SingleProductPage />} />
-              <Route
-                path="/update-product/:id"
-                element={<SingleProductPage />}
-              />
-              <Route path="/categories" element={<CategoriesPage />} />
-              <Route
-                path="/sub-categories/:id"
-                element={<SubCategoriesPage />}
-              />
-              <Route path="/orders" element={<OrdersPage />} />
-              <Route path="/order/:id" element={<OrderDetails />} />
-              <Route path="/users" element={<User />} />
-              <Route path="/user/:id" element={<UserDetails />} />
-              <Route path="/coupons" element={<CouponDetails />} />
-              <Route path="/coupon" element={<AddCoupon />} />
-              <Route path="/coupon/:id" element={<AddCoupon />} />
-              <Route path="/market-place" element={<MarketplaceManager />} />
-              <Route path="/social-media" element={<SocialMedia />} />
-              <Route path="/home-banner" element={<HomeBanner />} />
-              <Route path="/subscription" element={<Subscription />} /> */}
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/add-blog" element={<SingleBlogPage />} />
               <Route path="/update-blog/:id" element={<SingleBlogPage />} />
@@ -71,6 +40,14 @@ function App() {
               <Route path="/casestudy" element={<CaseStudy />} />
               <Route path="/add-casestudy" element={<AddCaseStudy />} />
               <Route path="/update-casestudy/:id" element={<AddCaseStudy />} />
+              <Route path="/career" element={<CareerPage />} />
+              <Route path="/add-career" element={<AddCareer />} />
+              <Route path="/update-career/:id" element={<AddCareer />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/add-portfolio" element={<AddPortfolio />} />
+              <Route path="/update-portfolio/:id" element={<AddPortfolio />} />
+              <Route path="/hire-developer" element={<HireDeveloper />} />
+              <Route path="/career" element={<CareerPage />} />
             </Route>
             <Route element={<RejectAuth />}>
               <Route path="/login" element={<Login />} />

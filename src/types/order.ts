@@ -1,4 +1,4 @@
-import { ProductDataType } from "./productDataTypes";
+import { ProductDataType } from "./hireDevTypes";
 
 export type getOrderPayloadType = {
   status?: string;
