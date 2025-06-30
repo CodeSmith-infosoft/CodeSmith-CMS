@@ -5,7 +5,10 @@ import { Overlay, Tooltip } from "react-bootstrap";
 import ConfirmationModal from "../ConfirmationModal";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { deleteTestimonial, getAllTestimonial } from "@/service/asyncStore/action/testimonial";
+import {
+  deleteTestimonial,
+  getAllTestimonial,
+} from "@/service/asyncStore/action/testimonial";
 import { TestimonialItemType } from "@/types/testimonialType";
 
 type ProductPropType = {
@@ -24,9 +27,8 @@ const TestimonialComponent = ({ setTotalCount }: ProductPropType) => {
   const refs = useRef<any>({});
   const [show, setShow] = useState("");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [productToDelete, setProductToDelete] = useState<TestimonialItemType | null>(
-    null
-  );
+  const [productToDelete, setProductToDelete] =
+    useState<TestimonialItemType | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -77,11 +79,23 @@ const TestimonialComponent = ({ setTotalCount }: ProductPropType) => {
       title: "Text Color",
       dataIndex: "textColor",
       key: "textColor",
+      render: (value: string) => (
+        <span className="d-flex gap-2 align-items-center">
+          <div style={{ backgroundColor: value }} className="color-preview" />
+          {value}
+        </span>
+      ),
     },
     {
       title: "Bg Color",
       dataIndex: "bgColor",
       key: "bgColor",
+      render: (value: string) => (
+        <span className="d-flex gap-2 align-items-center">
+          <div style={{ backgroundColor: value }} className="color-preview" />
+          {value}
+        </span>
+      ),
     },
     {
       title: "Action",
@@ -204,8 +218,8 @@ const TestimonialComponent = ({ setTotalCount }: ProductPropType) => {
         title="Delete Product"
         message={
           <>
-            Are you sure you want to delete <b>{productToDelete?.name}</b>?
-            This action cannot be undone.
+            Are you sure you want to delete <b>{productToDelete?.name}</b>? This
+            action cannot be undone.
           </>
         }
         confirmText="Delete"

@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Card, Col, Form, Row } from "react-bootstrap";
+import {
+  Card,
+  Col,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Form,
+  Row,
+} from "react-bootstrap";
 import { BsFileImageFill } from "react-icons/bs";
 import { Uploader } from "rsuite";
 import "rsuite/dist/rsuite.css";
@@ -19,6 +28,7 @@ import {
   updateTestimonial,
 } from "@/service/asyncStore/action/testimonial";
 import { maxSizeInBytes } from "@/utils/constant";
+import { FaCaretDown } from "react-icons/fa";
 
 const SingleTestimonial = () => {
   const [fileList, setFileList] = useState<any>([]);
@@ -169,51 +179,161 @@ const SingleTestimonial = () => {
                   <label htmlFor="">Name</label>
                   <input type="text" placeholder="Name" {...register("name")} />
                   <ErrorMessage message={errors.name?.message} />
-                  <label htmlFor="">Description</label>
+                  <label htmlFor="">Description (Max-Characters: 245)</label>
                   <input
                     type="text"
                     placeholder="Description"
-                    maxLength={345}
+                    maxLength={245}
                     {...register("description", {
                       required: "Description is required",
                       maxLength: {
-                        value: 345,
+                        value: 245,
                         message: "Description cannot exceed 800 characters",
                       },
                     })}
                   />
                   <ErrorMessage message={errors.description?.message} />
                   <label htmlFor="">Rating</label>
-                  <select
-                    className="form-select"
-                    {...register("rating", { required: "Rating is required" })}
-                  >
-                    <option value="">Select Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
+                  <div className="category-drop">
+                    <Controller
+                      name="rating"
+                      control={control}
+                      render={({ field }) => (
+                        <Dropdown>
+                          <DropdownToggle>
+                            {field.value || "Select Rating"}{" "}
+                            <FaCaretDown />
+                          </DropdownToggle>
+                          <DropdownMenu>
+                            <DropdownItem
+                              onClick={() => field.onChange("1")}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              1
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => field.onChange("2")}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              2
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => field.onChange("3")}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              3
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => field.onChange("4")}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              4
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => field.onChange("5")}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              5
+                            </DropdownItem>
+                          </DropdownMenu>
+                        </Dropdown>
+                      )}
+                    />
+                  </div>
                   <ErrorMessage message={errors.description?.message} />
                 </Card>
                 <Card className="my-4">
                   <h3>Color</h3>
 
-                  <label htmlFor="">Text Color</label>
-                  <input
-                    type="text"
-                    placeholder="Text Color"
-                    {...register("textColor")}
-                  />
-                  <ErrorMessage message={errors.textColor?.message} />
-
-                  <label htmlFor="">Background Color</label>
-                  <input
-                    type="text"
-                    placeholder="Background Color"
-                    {...register("bgColor")}
-                  />
+                  <label htmlFor="">Text & Background Color</label>
+                  <div className="category-drop">
+                    <Controller
+                      name="textColor"
+                      control={control}
+                      render={({ field }) => (
+                        <Dropdown>
+                          <DropdownToggle>
+                            {field.value || "Select a Tech Stack"}{" "}
+                            <FaCaretDown />
+                          </DropdownToggle>
+                          <DropdownMenu>
+                            <DropdownItem
+                              onClick={() => {
+                                field.onChange("#273974");
+                                setValue("bgColor", "#F2F4FE");
+                              }}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              <div
+                                style={{ backgroundColor: "#273974" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#273974"} -
+                              <div
+                                style={{ backgroundColor: "#F2F4FE" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#F2F4FE"}
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => {
+                                field.onChange("#E9373A");
+                                setValue("bgColor", "#FDEBEB");
+                              }}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              <div
+                                style={{ backgroundColor: "#E9373A" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#E9373A"} -
+                              <div
+                                style={{ backgroundColor: "#FDEBEB" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#FDEBEB"}
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => {
+                                field.onChange("#3098D4");
+                                setValue("bgColor", "#E7F4FB");
+                              }}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              <div
+                                style={{ backgroundColor: "#3098D4" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#3098D4"} -
+                              <div
+                                style={{ backgroundColor: "#E7F4FB" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#E7F4FB"}
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => {
+                                field.onChange("#119448");
+                                setValue("bgColor", "#E7F4ED");
+                              }}
+                              className="d-flex gap-2 align-items-center"
+                            >
+                              <div
+                                style={{ backgroundColor: "#119448" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#119448"} -
+                              <div
+                                style={{ backgroundColor: "#E7F4ED" }}
+                                className="color-preview"
+                              />{" "}
+                              {"#E7F4ED"}
+                            </DropdownItem>
+                          </DropdownMenu>
+                        </Dropdown>
+                      )}
+                    />
+                  </div>
                   <ErrorMessage message={errors.bgColor?.message} />
                 </Card>
               </div>

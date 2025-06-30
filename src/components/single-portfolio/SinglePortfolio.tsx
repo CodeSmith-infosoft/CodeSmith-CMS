@@ -306,13 +306,8 @@ const SinglePortfolio = () => {
                       <input
                         type="text"
                         placeholder="Type product name here. . ."
-                        maxLength={16}
                         {...register("projectName", {
                           required: "Project Name is required",
-                          maxLength: {
-                            value: 16,
-                            message: "Project Name cannot exceed 16 characters",
-                          },
                         })}
                       />
                       <ErrorMessage message={errors.projectName?.message} />
@@ -357,15 +352,15 @@ const SinglePortfolio = () => {
                       <ErrorMessage message={errors.techStackId?.message} />
                     </Col>
                     <Col md={12}>
-                      <label htmlFor="">Description</label>
+                      <label htmlFor="">Description (Max-Characters: 720)</label>
                       <textarea
                         placeholder="Type description name here. . ."
-                        maxLength={760}
+                        maxLength={720}
                         {...register("description", {
                           required: "Description is required",
                           maxLength: {
-                            value: 760,
-                            message: "Description cannot exceed 760 characters",
+                            value: 720,
+                            message: "Description cannot exceed 720 characters",
                           },
                         })}
                       />
@@ -378,11 +373,11 @@ const SinglePortfolio = () => {
             <Col md={12}>
               <div className="general-information">
                 <Card>
-                  <h3 className="mb-3">Features</h3>
+                  <h3 className="mb-3">Features (Max-Characters: 50)</h3>
                   <div className="feature-input">
                     <input
                       type="text"
-                      maxLength={40}
+                      maxLength={50}
                       placeholder="Type product feature here. . ."
                       value={currentFeature}
                       onChange={(e) => setCurrentFeature(e.target.value)}
@@ -401,7 +396,7 @@ const SinglePortfolio = () => {
                       >
                         <input
                           type="text"
-                          maxLength={40}
+                          maxLength={50}
                           value={
                             featureEdit === index
                               ? editFeatureValue

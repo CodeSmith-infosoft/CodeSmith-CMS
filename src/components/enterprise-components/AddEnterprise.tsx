@@ -78,7 +78,7 @@ const AddEnterprise = ({
       <Modal.Body>
         <h2>Add Enterprise Logo</h2>
 
-        <p>Image</p>
+        <p>Image ( x 70)</p>
         <div className="img-upload rsuite-image-upload-field">
           <Controller
             name="image"

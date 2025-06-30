@@ -79,7 +79,7 @@ const AddHomeBanner = ({
       <Modal.Body>
         <h2>{item?._id ? "Update" : "Add"} Home Banner</h2>
 
-        <p>Image</p>
+        <p>Image (1440 x 400)</p>
         <div className="img-upload rsuite-image-upload-field">
           <Controller
             name="image"

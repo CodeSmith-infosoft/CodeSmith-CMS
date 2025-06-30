@@ -425,7 +425,7 @@ const SingleCaseStudy = () => {
             <Col md={6}>
               <Card>
                 <h3>Company Images</h3>
-                <label htmlFor="">Company Logo</label>
+                <label htmlFor="">Company Logo ( x 120)</label>
                 <div className="file-upload">
                   <Controller
                     name="companyLogo"
