@@ -140,6 +140,7 @@ const SingleTeam = () => {
         subRedirect="/team-member"
         cancelBtn
         cancelPath="/team-member"
+        isCancelConfirm={true}
         onSubmit={handleSubmit(onSubmit)}
       />
       <section className="single-product">

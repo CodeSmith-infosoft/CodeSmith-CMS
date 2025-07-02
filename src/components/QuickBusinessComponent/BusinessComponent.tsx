@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import CommonTable from "../CommonComponents/CommonTable";
 import { BsEye } from "react-icons/bs";
 import {
-  getAllTouch,
-  markAsRead,
+  getAllHireDeveloperInquiry, 
+  markHireDeveloperInquiry,
 } from "@/service/asyncStore/action/business";
 import { Modal } from "react-bootstrap";
 
@@ -13,15 +13,16 @@ type ProductPropType = {
 
 interface ContactItem {
   _id: string;
-  fname: string;
+  name: string;
   email: string;
-  mobile: string;
+  hiringDuration: string;
   message: string;
   isActive: boolean;
   isMark: boolean;
-  createdAt: string;
+  service: string;
   updatedAt: string;
   budget: boolean;
+  createdAt: string;
 }
 
 interface MyVerticallyCenteredModalProps {
@@ -29,7 +30,7 @@ interface MyVerticallyCenteredModalProps {
   onHide: () => void;
   selectedData: ContactItem | null;
 }
-const BusinessComponent = ({ setTotalCount }: ProductPropType) => {
+const QuickBusinessComponent = ({ setTotalCount }: ProductPropType) => {
   const [productData, setProductData] = useState<ContactItem[]>([]);
   const [modalShow, setModalShow] = React.useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<ContactItem | null>(null);
@@ -53,7 +54,7 @@ const BusinessComponent = ({ setTotalCount }: ProductPropType) => {
     // Mark as read if not already marked
     if (!item.isMark) {
       try {
-        await markAsRead(item._id);
+        await markHireDeveloperInquiry(item._id);
         // Update the local state to reflect the change
         setProductData((prevData) =>
           prevData.map((dataItem) =>
@@ -69,8 +70,8 @@ const BusinessComponent = ({ setTotalCount }: ProductPropType) => {
   const columns = [
     {
       title: "Name",
-      dataIndex: "fname",
-      key: "fname",
+      dataIndex: "name",
+      key: "name",
       render: (value: string, record: ContactItem) => (
         <p
           className={`two-line-clamp ${!record.isMark ? "fw-bold" : ""}`}
@@ -91,11 +92,21 @@ const BusinessComponent = ({ setTotalCount }: ProductPropType) => {
       ),
     },
     {
-      title: "Mobile",
-      dataIndex: "mobile",
-      key: "mobile",
+      title: "Hiring Duration",
+      dataIndex: "hiringDuration",
+      key: "hiringDuration",
       render: (value: string, record: ContactItem) => (
-        <span style={{ fontWeight: !record.isMark ? "bold" : "normal" }}>
+        <span style={{ fontWeight: !record.isMark ? "bold" : "normal", }}>
+          {value}
+        </span>
+      ),
+    },
+    {
+      title: "Service",
+      dataIndex: "service",
+      key: "service",
+      render: (value: string, record: ContactItem) => (
+        <span style={{ fontWeight: !record.isMark ? "bold" : "normal", }}>
           {value}
         </span>
       ),
@@ -134,7 +145,7 @@ const BusinessComponent = ({ setTotalCount }: ProductPropType) => {
   ];
 
   const getTeamData = () => {
-    getAllTouch({ page: pagination.page, limit: pagination.limit }).then(
+    getAllHireDeveloperInquiry({ page: pagination.page, limit: pagination.limit }).then(
       (res) => {
         setProductData(res.data.records);
         setPagination({
@@ -192,7 +203,7 @@ function MyVerticallyCenteredModal(props: MyVerticallyCenteredModalProps) {
           <div>
             <div className="mb-3">
               <strong>Name:</strong>
-              <p className="mb-2">{selectedData.fname}</p>
+              <p className="mb-2">{selectedData.name}</p>
             </div>
 
             <div className="mb-3">
@@ -201,8 +212,8 @@ function MyVerticallyCenteredModal(props: MyVerticallyCenteredModalProps) {
             </div>
 
             <div className="mb-3">
-              <strong>Mobile:</strong>
-              <p className="mb-2">{selectedData.mobile}</p>
+              <strong>Hiring Duration:</strong>
+              <p className="mb-2">{selectedData.hiringDuration}</p>
             </div>
 
             <div className="mb-3">
@@ -211,8 +222,8 @@ function MyVerticallyCenteredModal(props: MyVerticallyCenteredModalProps) {
             </div>
 
             <div className="mb-3">
-              <strong>Do you have an it / security budget:</strong>
-              <p className="mb-2">{selectedData.budget ? "Yes" : "No"}</p>
+              <strong>Service:</strong>
+              <p className="mb-2">{selectedData.service}</p>
             </div>
 
             <div className="mb-3">
@@ -230,4 +241,4 @@ function MyVerticallyCenteredModal(props: MyVerticallyCenteredModalProps) {
   );
 }
 
-export default BusinessComponent;
+export default QuickBusinessComponent;

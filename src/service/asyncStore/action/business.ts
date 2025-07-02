@@ -47,3 +47,28 @@ export async function markJobApplication(contactId: string) {
     throw error?.response?.data || error;
   }
 }
+
+export async function getAllHireDeveloperInquiry(payload: getBlogPayloadType) {
+  try {
+    const response = api.get(
+      `/hireDeveloper/getAllHireDeveloperInquiry?${getParamString(payload)}`
+    );
+
+    return (await response).data;
+  } catch (error: any) {
+    console.log(error);
+    return error?.response?.data;
+  }
+}
+
+export async function markHireDeveloperInquiry(contactId: string) {
+  try {
+    const response = await api.put(
+      `/hireDeveloper/markHireDeveloperInquiry/${contactId}`
+    );
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error?.response?.data || error;
+  }
+}

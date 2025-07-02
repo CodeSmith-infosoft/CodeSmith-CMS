@@ -119,6 +119,7 @@ const Layouts = ({ children }: LayoutProps) => {
                 <li
                   className={
                     pathname === "/business-inquiry" ||
+                    pathname === "/hire-inquiry" ||
                     pathname === "/job-application"
                       ? "active-menu"
                       : ""
@@ -160,6 +161,17 @@ const Layouts = ({ children }: LayoutProps) => {
                         }}
                       >
                         <FaPlus /> Job Application
+                      </label>
+                      <label
+                        className={`category-checkbox ${
+                          pathname === "/hire-inquiry" ? "active" : ""
+                        }`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/hire-inquiry`);
+                        }}
+                      >
+                        <FaPlus /> Hire Inquiry
                       </label>
                     </div>
                   </Collapse>

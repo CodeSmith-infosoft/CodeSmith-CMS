@@ -47,9 +47,7 @@ const SingleTestimonial = () => {
       name: "",
       description: "",
       rating: "",
-      image: "",
-      textColor: "",
-      bgColor: "",
+      image: ""
     },
   });
 
@@ -62,8 +60,6 @@ const SingleTestimonial = () => {
           setValue("description", data.description);
           setValue("image", import.meta.env.VITE_IMAGE_DOMAIN + data.image);
           setValue("rating", data.rating);
-          setValue("textColor", data.textColor);
-          setValue("bgColor", data.bgColor);
           setFileList([
             {
               url: import.meta.env.VITE_IMAGE_DOMAIN + data.image,
@@ -80,8 +76,6 @@ const SingleTestimonial = () => {
     formData.append("name", data.name);
     formData.append("description", data.description);
     formData.append("rating", data.rating);
-    formData.append("textColor", data.textColor);
-    formData.append("bgColor", data.bgColor);
     if (id && !(data.image instanceof File)) {
       const blob = await getImageAsBlob(data.image);
       formData.append(`image`, blob);
@@ -128,6 +122,7 @@ const SingleTestimonial = () => {
         subRedirect="/testimonial"
         cancelBtn
         cancelPath="/testimonial"
+        isCancelConfirm={true}
         onSubmit={handleSubmit(onSubmit)}
       />
       <section className="single-product">
@@ -241,100 +236,6 @@ const SingleTestimonial = () => {
                     />
                   </div>
                   <ErrorMessage message={errors.description?.message} />
-                </Card>
-                <Card className="my-4">
-                  <h3>Color</h3>
-
-                  <label htmlFor="">Text & Background Color</label>
-                  <div className="category-drop">
-                    <Controller
-                      name="textColor"
-                      control={control}
-                      render={({ field }) => (
-                        <Dropdown>
-                          <DropdownToggle>
-                            {field.value || "Select a Tech Stack"}{" "}
-                            <FaCaretDown />
-                          </DropdownToggle>
-                          <DropdownMenu>
-                            <DropdownItem
-                              onClick={() => {
-                                field.onChange("#273974");
-                                setValue("bgColor", "#F2F4FE");
-                              }}
-                              className="d-flex gap-2 align-items-center"
-                            >
-                              <div
-                                style={{ backgroundColor: "#273974" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#273974"} -
-                              <div
-                                style={{ backgroundColor: "#F2F4FE" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#F2F4FE"}
-                            </DropdownItem>
-                            <DropdownItem
-                              onClick={() => {
-                                field.onChange("#E9373A");
-                                setValue("bgColor", "#FDEBEB");
-                              }}
-                              className="d-flex gap-2 align-items-center"
-                            >
-                              <div
-                                style={{ backgroundColor: "#E9373A" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#E9373A"} -
-                              <div
-                                style={{ backgroundColor: "#FDEBEB" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#FDEBEB"}
-                            </DropdownItem>
-                            <DropdownItem
-                              onClick={() => {
-                                field.onChange("#3098D4");
-                                setValue("bgColor", "#E7F4FB");
-                              }}
-                              className="d-flex gap-2 align-items-center"
-                            >
-                              <div
-                                style={{ backgroundColor: "#3098D4" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#3098D4"} -
-                              <div
-                                style={{ backgroundColor: "#E7F4FB" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#E7F4FB"}
-                            </DropdownItem>
-                            <DropdownItem
-                              onClick={() => {
-                                field.onChange("#119448");
-                                setValue("bgColor", "#E7F4ED");
-                              }}
-                              className="d-flex gap-2 align-items-center"
-                            >
-                              <div
-                                style={{ backgroundColor: "#119448" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#119448"} -
-                              <div
-                                style={{ backgroundColor: "#E7F4ED" }}
-                                className="color-preview"
-                              />{" "}
-                              {"#E7F4ED"}
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </Dropdown>
-                      )}
-                    />
-                  </div>
-                  <ErrorMessage message={errors.bgColor?.message} />
                 </Card>
               </div>
             </Col>

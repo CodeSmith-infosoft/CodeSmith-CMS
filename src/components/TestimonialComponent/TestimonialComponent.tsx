@@ -76,28 +76,6 @@ const TestimonialComponent = ({ setTotalCount }: ProductPropType) => {
       key: "rating",
     },
     {
-      title: "Text Color",
-      dataIndex: "textColor",
-      key: "textColor",
-      render: (value: string) => (
-        <span className="d-flex gap-2 align-items-center">
-          <div style={{ backgroundColor: value }} className="color-preview" />
-          {value}
-        </span>
-      ),
-    },
-    {
-      title: "Bg Color",
-      dataIndex: "bgColor",
-      key: "bgColor",
-      render: (value: string) => (
-        <span className="d-flex gap-2 align-items-center">
-          <div style={{ backgroundColor: value }} className="color-preview" />
-          {value}
-        </span>
-      ),
-    },
-    {
       title: "Action",
       key: "_id",
       dataIndex: "_id",

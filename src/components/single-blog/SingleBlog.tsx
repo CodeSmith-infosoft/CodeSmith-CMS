@@ -150,6 +150,7 @@ const SingleBlog = () => {
         subRedirect="/blog"
         cancelBtn
         cancelPath="/blog"
+        isCancelConfirm={true}
         onSubmit={handleSubmit(onSubmit)}
       />
       <section className="single-product">

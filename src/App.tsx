@@ -27,6 +27,7 @@ import BusinessInquiry from "./pages/BusinessInquiry";
 import JobApplication from "./pages/JobApplication";
 import AboutUs from "./pages/AboutUs";
 import SuccessStory from "./pages/SuccessStory";
+import DirectBusinessInquiry from "./pages/DirectBusinessInquiry";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
             <Route path="/hire-developer" element={<HireDeveloper />} />
             <Route path="/job-application" element={<JobApplication />} />
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/hire-inquiry" element={<DirectBusinessInquiry />} />
           </Route>
           <Route element={<RejectAuth />}>
             <Route path="/login" element={<Login />} />

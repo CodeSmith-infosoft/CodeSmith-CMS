@@ -215,6 +215,7 @@ const SinglePortfolio = () => {
         subRedirect="/portfolio"
         cancelBtn
         cancelPath="/portfolio"
+        isCancelConfirm={true}
         onSubmit={handleSubmit(onSubmit)}
       />
       <section className="single-product">
@@ -222,7 +223,7 @@ const SinglePortfolio = () => {
           <Row>
             <Col md={6}>
               <Card>
-                <h3 className="mb-3">Company Logo</h3>
+                <h3 className="mb-3">Company Banner</h3>
                 <div className="file-upload">
                   <Controller
                     name="image"

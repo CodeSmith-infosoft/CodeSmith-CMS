@@ -235,6 +235,7 @@ const SingleCareer = () => {
         subRedirect="/career"
         cancelBtn
         cancelPath="/career"
+        isCancelConfirm={true}
         onSubmit={handleSubmit(onSubmit)}
       />
       <section className="single-product">

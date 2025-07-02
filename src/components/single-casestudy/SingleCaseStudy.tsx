@@ -417,6 +417,7 @@ const SingleCaseStudy = () => {
         subRedirect="/casestudy"
         cancelBtn
         cancelPath="/casestudy"
+        isCancelConfirm={true}
         onSubmit={handleSubmit(onSubmit)}
       />
       <section className="single-product">
@@ -743,7 +744,9 @@ const SingleCaseStudy = () => {
                           />
                         </Col>
                         <Col md={9}>
-                          <label htmlFor="">Content (Max-Characters: 205)</label>
+                          <label htmlFor="">
+                            Content (Max-Characters: 205)
+                          </label>
                           <textarea
                             maxLength={205}
                             placeholder="Type content name here. . ."
@@ -826,10 +829,35 @@ const SingleCaseStudy = () => {
                         return (
                           <Dropdown className="banner-dropdown">
                             <Dropdown.Toggle>
-                              {selectedItems.length
-                                ? selectedItems.join(", ")
-                                : "Select a Tech Stack"}{" "}
-                              <FaCaretDown />
+                              <div className="d-flex flex-wrap align-items-center gap-2">
+                                {selectedItems.length ? (
+                                  selectedItems.map((item) => (
+                                    <span
+                                      key={item}
+                                      className="badge bg-primary d-flex align-items-center"
+                                      style={{ padding: "0.4em 0.6em" }}
+                                    >
+                                      {item}
+                                      <span
+                                        onClick={(e) => {
+                                          e.stopPropagation(); // Don't close dropdown
+                                          toggleItem(item); // Remove this item
+                                        }}
+                                        style={{
+                                          marginLeft: "0.5em",
+                                          cursor: "pointer",
+                                          fontWeight: "bold",
+                                        }}
+                                      >
+                                        ×
+                                      </span>
+                                    </span>
+                                  ))
+                                ) : (
+                                  <span>Select a Tech Stack</span>
+                                )}
+                                <FaCaretDown className="ms-2" />
+                              </div>
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu
@@ -851,7 +879,10 @@ const SingleCaseStudy = () => {
                                 filteredData.map((data: any) => (
                                   <Dropdown.Item
                                     key={data.title}
-                                    onClick={() => toggleItem(data.title)}
+                                    onClick={(e) => {
+                                      e.stopPropagation(); // prevents dropdown from closing
+                                      toggleItem(data.title);
+                                    }}
                                     active={selectedItems.includes(data.title)}
                                   >
                                     <input
