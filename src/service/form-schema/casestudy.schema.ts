@@ -5,11 +5,6 @@ const solutionSchema = z.object({
   p: z.string().min(1, "Paragraph cannot be empty"),
 });
 
-const typographySchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  cdn: z.string().min(1, "Paragraph is required").url("CDN URL must be valid"),
-});
-
 export const addCaseStudySchema = z.object({
   projectName: z.string().min(1, "Project Name is required"),
   description: z.string().min(1, "Description is required").max(820, "Paragraph must contain less then 820 letters."),

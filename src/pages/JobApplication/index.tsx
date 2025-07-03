@@ -1,4 +1,3 @@
-import BusinessComponent from "@/components/BusinessComponent/BusinessComponent";
 import PageTitle from "@/components/CommonComponents/PageTitle";
 import JobComponent from "@/components/JobComponent/JobComponent";
 import { useState } from "react";

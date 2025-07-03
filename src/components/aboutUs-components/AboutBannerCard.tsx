@@ -28,7 +28,7 @@ const AboutBannerCard: React.FC = () => {
   const [isEdit, setIsEdit] = useState<ItemType | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [totalCount, setTotalCount] = useState(0);
+  const [totalCount] = useState(0);
 
   const {
     register,
