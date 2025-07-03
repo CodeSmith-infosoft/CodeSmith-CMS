@@ -4,10 +4,10 @@ const SingleTeamSchema = z.object({
   // General Information section
   name: z.string().min(1, "Name is required"),
   position: z.string().min(1, "Position is required"),
-  linkedin: z.string().min(1, "LinkedIn URL is required"),
-  instagram: z.string().min(1, "Instagram URL is required"),
-  facebook: z.string().min(1, "Facebook URL is required"),
-  twitter: z.string().min(1, "Twitter URL is required"),
+  linkedin: z.string().optional(),
+  instagram: z.string().optional(),
+  facebook: z.string().optional(),
+  twitter: z.string().optional(),
   textColor: z.string().min(1, "Text Color is required"),
   bgColor: z.string().min(1, "Background Color is required"),
 

@@ -89,10 +89,10 @@ const SingleTeam = () => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("position", data.position);
-    formData.append("linkedin", data.linkedin);
-    formData.append("instagram", data.instagram);
-    formData.append("facebook", data.facebook);
-    formData.append("twitter", data.twitter);
+    formData.append("linkedin", data.linkedin || "");
+    formData.append("instagram", data.instagram || "");
+    formData.append("facebook", data.facebook || "");
+    formData.append("twitter", data.twitter || "");
     formData.append("textColor", data.textColor);
     formData.append("bgColor", data.bgColor);
     if (id && !(data.photo instanceof File)) {

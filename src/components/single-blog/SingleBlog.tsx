@@ -251,7 +251,7 @@ const SingleBlog = () => {
                   />
                   <ErrorMessage message={errors.title?.message} />
 
-                  <label htmlFor="">Description</label>
+                  <label htmlFor="">Mail Description</label>
                   <textarea
                     placeholder="Type blog description here. . ."
                     maxLength={800}
