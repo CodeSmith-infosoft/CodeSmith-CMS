@@ -35,7 +35,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<RequireAuth />}>
-            <Route path="/" element={<HomeBanner />} />
+            <Route path="/dashboard" element={<HomeBanner />} />
             <Route path="/techstack" element={<Techstack />} />
             <Route path="/success-story" element={<SuccessStory />} />
             <Route path="/testimonial" element={<Testimonial />} />
