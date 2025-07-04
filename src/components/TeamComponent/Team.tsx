@@ -88,16 +88,6 @@ const Team = ({ setTotalCount }: ProductPropType) => {
       key: "twitter",
     },
     {
-      title: "Text Color",
-      dataIndex: "textColor",
-      key: "textColor",
-    },
-    {
-      title: "Bg Color",
-      dataIndex: "bgColor",
-      key: "bgColor",
-    },
-    {
       title: "Action",
       key: "_id",
       dataIndex: "_id",

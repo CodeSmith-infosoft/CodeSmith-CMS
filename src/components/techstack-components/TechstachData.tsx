@@ -47,8 +47,6 @@ const TechstachData: React.FC = () => {
     resolver: zodResolver(techStackSchema),
     defaultValues: {
       name: "",
-      bgColor: "",
-      textColor: "",
     },
   });
 
@@ -61,28 +59,6 @@ const TechstachData: React.FC = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
-    },
-    {
-      title: "Bg Color",
-      dataIndex: "bgColor",
-      key: "bgColor",
-      render: (value: string) => (
-        <span className="d-flex gap-2 align-items-center">
-          <div style={{ backgroundColor: value }} className="color-preview" />
-          {value}
-        </span>
-      ),
-    },
-    {
-      title: "Text Color",
-      dataIndex: "textColor",
-      key: "textColor",
-      render: (value: string) => (
-        <span className="d-flex gap-2 align-items-center">
-          <div style={{ backgroundColor: value }} className="color-preview" />
-          {value}
-        </span>
-      ),
     },
     {
       title: "Action",

@@ -8,9 +8,6 @@ const SingleTeamSchema = z.object({
   instagram: z.string().optional(),
   facebook: z.string().optional(),
   twitter: z.string().optional(),
-  textColor: z.string().min(1, "Text Color is required"),
-  bgColor: z.string().min(1, "Background Color is required"),
-
   // Media section
   photo: z.union([z.instanceof(File), z.string().url("Image is required")]),
 });

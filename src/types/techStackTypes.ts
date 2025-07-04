@@ -1,7 +1,5 @@
 export type addTechStackType = {
     name: string;
-    bgColor: string;
-    textColor: string;
 }
 
 export type TechStackItemType = {

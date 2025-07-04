@@ -42,48 +42,32 @@ export type techStackModalPropsType = {
   control: Control<
     {
       name: string;
-      bgColor: string;
-      textColor: string;
     },
     any,
     {
       name: string;
-      bgColor: string;
-      textColor: string;
     }
   >;
   register: UseFormRegister<{
     name: string;
-    bgColor: string;
-    textColor: string;
   }>;
   handleSubmit: UseFormHandleSubmit<
     {
       name: string;
-      bgColor: string;
-      textColor: string;
     },
     {
       name: string;
-      bgColor: string;
-      textColor: string;
     }
   >;
   onSubmit: (data: techStackFormData) => void;
   errors: FieldErrors<{
     name: string;
-    bgColor: string;
-    textColor: string;
   }>;
   item?: TechStackItemType | null;
   setValue: UseFormSetValue<{
     name: string;
-    bgColor: string;
-    textColor: string;
   }>;
   setError: UseFormSetError<{
     name: string;
-    bgColor: string;
-    textColor: string;
   }>;
 };

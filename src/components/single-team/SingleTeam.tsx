@@ -41,8 +41,6 @@ const SingleTeam = () => {
       instagram: "",
       facebook: "",
       twitter: "",
-      textColor: "",
-      bgColor: "",
     },
   });
 
@@ -58,8 +56,6 @@ const SingleTeam = () => {
           setValue("instagram", data.instagram);
           setValue("facebook", data.facebook);
           setValue("twitter", data.twitter);
-          setValue("textColor", data.textColor);
-          setValue("bgColor", data.bgColor);
           setFileList([
             {
               url: import.meta.env.VITE_IMAGE_DOMAIN + data.photo,
@@ -93,8 +89,6 @@ const SingleTeam = () => {
     formData.append("instagram", data.instagram || "");
     formData.append("facebook", data.facebook || "");
     formData.append("twitter", data.twitter || "");
-    formData.append("textColor", data.textColor);
-    formData.append("bgColor", data.bgColor);
     if (id && !(data.photo instanceof File)) {
       const blob = await getImageAsBlob(data.photo);
       formData.append(`photo`, blob);
@@ -233,25 +227,6 @@ const SingleTeam = () => {
                     {...register("twitter")}
                   />
                   <ErrorMessage message={errors.twitter?.message} />
-                </Card>
-                <Card className="mb-4">
-                  <h3>Color</h3>
-
-                  <label htmlFor="">Text Color</label>
-                  <input
-                    type="text"
-                    placeholder="Text Color"
-                    {...register("textColor")}
-                  />
-                  <ErrorMessage message={errors.textColor?.message} />
-
-                  <label htmlFor="">Background Color</label>
-                  <input
-                    type="text"
-                    placeholder="Background Color"
-                    {...register("bgColor")}
-                  />
-                  <ErrorMessage message={errors.bgColor?.message} />
                 </Card>
               </div>
             </Col>

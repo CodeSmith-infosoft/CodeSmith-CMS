@@ -1,20 +1,13 @@
 import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
   Modal,
 } from "react-bootstrap";
-import { Controller } from "react-hook-form";
 import ErrorMessage from "../ErrorMessage";
 import { techStackModalPropsType } from "@/types/blogTypes";
-import { FaAngleDown } from "react-icons/fa";
 import { useEffect } from "react";
 
 const AddTechstack = ({
   handleToggle,
   openMarketModal,
-  control,
   handleSubmit,
   onSubmit,
   errors,
@@ -24,9 +17,7 @@ const AddTechstack = ({
 }: techStackModalPropsType) => {
   useEffect(() => {
     if (item?._id) {
-      setValue("bgColor", item.bgColor);
       setValue("name", item.name);
-      setValue("textColor", item.textColor);
     }
   }, [item, openMarketModal]);
 
@@ -49,79 +40,6 @@ const AddTechstack = ({
           {...register("name")}
         />
         <ErrorMessage message={errors.name?.message} />
-
-        <p>Bg Color</p>
-        <div className="img-upload rsuite-image-upload-field">
-          <Controller
-            name="bgColor"
-            control={control}
-            render={({ field }) => (
-              <Dropdown className="banner-dropdown">
-                <DropdownToggle className="banner-button">
-                  {field.value || "Select Bg Color"}
-                  <FaAngleDown />
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem
-                    onClick={() => {
-                      field.onChange("#E7F4FB");
-                      setValue("textColor", "#3098D4");
-                    }}
-                    className="d-flex gap-2 align-items-center"
-                  >
-                    <div
-                      style={{ backgroundColor: "#E7F4FB" }}
-                      className="color-preview"
-                    />{" "}
-                    {"#E7F4FB"} -
-                    <div
-                      style={{ backgroundColor: "#3098D4" }}
-                      className="color-preview"
-                    />{" "}
-                    {"#3098D4"}
-                  </DropdownItem>
-                  <DropdownItem
-                    onClick={() => {
-                      field.onChange("#F2F4FE");
-                      setValue("textColor", "#273974");
-                    }}
-                    className="d-flex gap-2 align-items-center"
-                  >
-                    <div
-                      style={{ backgroundColor: "#F2F4FE" }}
-                      className="color-preview"
-                    />{" "}
-                    {"#F2F4FE"} -
-                    <div
-                      style={{ backgroundColor: "#273974" }}
-                      className="color-preview"
-                    />{" "}
-                    {"#273974"}
-                  </DropdownItem>
-                  <DropdownItem
-                    onClick={() => {
-                      field.onChange("#E7F4ED");
-                      setValue("textColor", "#119448");
-                    }}
-                    className="d-flex gap-2 align-items-center"
-                  >
-                    <div
-                      style={{ backgroundColor: "#E7F4ED" }}
-                      className="color-preview"
-                    />{" "}
-                    {"#E7F4ED"} -
-                    <div
-                      style={{ backgroundColor: "#119448" }}
-                      className="color-preview"
-                    />{" "}
-                    {"#119448"}
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            )}
-          />
-          <ErrorMessage message={errors.bgColor?.message} />
-        </div>
         <div className="btn-common">
           <button className="btn-cencal" onClick={() => handleToggle(false)}>
             Cancel
