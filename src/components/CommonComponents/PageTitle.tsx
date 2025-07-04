@@ -59,7 +59,7 @@ const PageTitle = ({
             {title} {totalCount ? `(${totalCount})` : ""}
           </h2>
           <div className="sub-title">
-            <Link to="/">
+            <Link to="/dashboard">
               {" "}
               <span className="sub-title-1">Dashboard</span>
             </Link>

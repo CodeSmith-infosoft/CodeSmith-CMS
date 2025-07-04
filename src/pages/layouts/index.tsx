@@ -25,7 +25,7 @@ const Layouts = ({ children }: LayoutProps) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   console.log(pathname);
@@ -40,8 +40,8 @@ const Layouts = ({ children }: LayoutProps) => {
             </div>
             <div className="menu-items">
               <ul className="mt-5">
-                <li className={pathname === "/" ? "active-menu" : ""}>
-                  <Link to="/">
+                <li className={pathname === "/dashboard" ? "active-menu" : ""}>
+                  <Link to="/dashboard">
                     <MdDashboard size={22} /> Dashboard
                   </Link>{" "}
                 </li>

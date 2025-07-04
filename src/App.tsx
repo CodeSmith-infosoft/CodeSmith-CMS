@@ -69,7 +69,7 @@ function App() {
             <Route path="/hire-inquiry" element={<DirectBusinessInquiry />} />
           </Route>
           <Route element={<RejectAuth />}>
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
           </Route>
         </Routes>
         <ToastContainer
