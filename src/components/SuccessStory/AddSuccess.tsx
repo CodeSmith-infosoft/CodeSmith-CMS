@@ -35,7 +35,7 @@ const AddSuccess = ({
   ];
 
   const handleUpload = async (newFileList: any, field: any) => {
-    const data = newFileList[0];
+    const data = newFileList.at(-1);
     const file = data?.originFileObj || data?.blobFile || data;
 
     if (!(file instanceof Blob)) {
