@@ -39,7 +39,7 @@ const AddEnterprise = ({
 
     const dimensionsValid = await new Promise<boolean>((resolve) => {
       image.onload = () => {
-        const isValid = image.height === 70;
+        const isValid = image.height === 68;
         URL.revokeObjectURL(objectUrl);
         resolve(isValid);
       };
@@ -54,7 +54,7 @@ const AddEnterprise = ({
       setFileList([]); // Reset preview
       field.onChange(""); // Clear form field value
       setError("image", {
-        message: `Image must be exactly 70 pixels height.`,
+        message: `Image must be exactly 68 pixels height.`,
       });
       // toast.error("Only images with 1440x400 resolution are allowed.");
       return;
@@ -78,7 +78,7 @@ const AddEnterprise = ({
       <Modal.Body>
         <h2>Add Enterprise Logo</h2>
 
-        <p>Image ( x 70)</p>
+        <p>Image ( x 68)</p>
         <div className="img-upload rsuite-image-upload-field">
           <Controller
             name="image"

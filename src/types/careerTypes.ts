@@ -4,7 +4,7 @@ export interface addCareerType {
   qualification: string;
   location: string;
   experience: string;
-  vacancy: number;
+  vacancy: string;
   ofcTime: string;
   role: string[];
   skills: string[];

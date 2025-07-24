@@ -72,7 +72,7 @@ const SingleCareer = () => {
       role: [],
       skills: [],
       techStackId: "",
-      vacancy: 1,
+      vacancy: "",
     },
   });
 
@@ -121,7 +121,7 @@ const SingleCareer = () => {
           setValue("role", data.role);
           setValue("skills", data.skills);
           setValue("techStackId", data.techStackId);
-          setValue("vacancy", data.vacancy);
+          setValue("vacancy", data.vacancy.toString());
         }
       });
     }

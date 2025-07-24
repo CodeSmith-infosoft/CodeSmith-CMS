@@ -6,7 +6,7 @@ const JobPostingSchema = z.object({
   qualification: z.string().min(1, "Qualification is required"),
   location: z.string().min(1, "Location is required"),
   experience: z.string().min(1, "Experience is required"),
-  vacancy: z.number().min(1, "At least one vacancy is required"),
+  vacancy: z.string().min(1, "At least one vacancy is required"),
   ofcTime: z.string().min(1, "Office time is required"),
   role: z
     .array(z.string().min(1, "Role description cannot be empty"))

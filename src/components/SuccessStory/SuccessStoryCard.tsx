@@ -184,7 +184,7 @@ const SuccessStoryCard: React.FC = () => {
         <h3 className="mt-5 mb-3 bg-white p-3 rounded-4">Mobile Story</h3>
         <Row className="g-4">
           {mobileData.map((banner) => (
-            <Col key={banner._id} md={6}>
+            <Col key={banner._id} md={3}>
               <Card className="home-banner-card h-100">
                 <Card.Body className="d-flex justify-content-center">
                   <div className="logo-section">
