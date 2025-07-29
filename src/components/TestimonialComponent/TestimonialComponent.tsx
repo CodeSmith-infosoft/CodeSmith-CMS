@@ -49,10 +49,7 @@ const TestimonialComponent = ({ setTotalCount }: ProductPropType) => {
             onClick={() => handleEdit(data._id)}
           >
             <div className="product">
-              <img
-                src={import.meta.env.VITE_IMAGE_DOMAIN + value}
-                alt="avatar"
-              />
+              <img src={value} alt="avatar" />
             </div>
           </div>
         </>

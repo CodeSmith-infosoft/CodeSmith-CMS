@@ -7,7 +7,10 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { BlogItemType } from "@/types/blogTypes";
 import { CaseStudyItemType } from "@/types/caseStudyTypes";
-import { getAllPortfolio, deletePortfolio } from "@/service/asyncStore/action/portfolio";
+import {
+  getAllPortfolio,
+  deletePortfolio,
+} from "@/service/asyncStore/action/portfolio";
 
 type ProductPropType = {
   setTotalCount: React.Dispatch<React.SetStateAction<number>>;
@@ -48,10 +51,7 @@ const PortfolioComponent = ({ setTotalCount }: ProductPropType) => {
             onClick={() => handleEdit(data._id)}
           >
             <div className="product">
-              <img
-                src={import.meta.env.VITE_IMAGE_DOMAIN + value}
-                alt="avatar"
-              />
+              <img src={value} alt="avatar" />
             </div>
           </div>
         </>

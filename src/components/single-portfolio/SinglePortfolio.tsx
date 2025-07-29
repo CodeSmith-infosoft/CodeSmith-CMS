@@ -96,18 +96,18 @@ const SinglePortfolio = () => {
           setValue("description", data.description);
           setValue("techStackId", data.techStackId);
           setValue("projectName", data.projectName);
-          setValue("banner", import.meta.env.VITE_IMAGE_DOMAIN + data.banner);
-          setValue("image", import.meta.env.VITE_IMAGE_DOMAIN + data.image);
+          setValue("banner", data.banner);
+          setValue("image", data.image);
           setFileList({
             image: [
               {
-                url: import.meta.env.VITE_IMAGE_DOMAIN + data.image,
+                url: data.image,
                 name: data.image.split("/").at(-1),
               },
             ],
             banner: [
               {
-                url: import.meta.env.VITE_IMAGE_DOMAIN + data.banner,
+                url: data.banner,
                 name: data.banner.split("/").at(-1),
               },
             ],
@@ -165,7 +165,7 @@ const SinglePortfolio = () => {
 
     if (file.size > maxSizeInBytes) {
       toast.error("File size must be 1MB or less.");
-      setFileList({...fileList, [key]: []});
+      setFileList({ ...fileList, [key]: [] });
       return;
     }
 
@@ -353,7 +353,9 @@ const SinglePortfolio = () => {
                       <ErrorMessage message={errors.techStackId?.message} />
                     </Col>
                     <Col md={12}>
-                      <label htmlFor="">Description (Max-Characters: 720)</label>
+                      <label htmlFor="">
+                        Description (Max-Characters: 720)
+                      </label>
                       <textarea
                         placeholder="Type description name here. . ."
                         maxLength={720}

@@ -25,12 +25,12 @@ const AddHire = ({
 
   useEffect(() => {
     if (item?._id) {
-      setValue("logo", import.meta.env.VITE_IMAGE_DOMAIN + item.logo);
+      setValue("logo", item.logo);
       setValue("title", item.title);
       setValue("url", item.url);
       setFileList([
         {
-          url: import.meta.env.VITE_IMAGE_DOMAIN + item.logo,
+          url: item.logo,
           name: item.logo.split("/").at(-1),
         },
       ]);

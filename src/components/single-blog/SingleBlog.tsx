@@ -65,14 +65,14 @@ const SingleBlog = () => {
           const data = res.data;
           setValue("title", data.title);
           setValue("description", data.description);
-          setValue("image", import.meta.env.VITE_IMAGE_DOMAIN + data.image);
+          setValue("image", data.image);
           setValue("details", data.details);
           setValue("techStackId", data.techStackId);
           setValue("createdBy", data.createdBy);
           console.log(editorRef.current);
           setFileList([
             {
-              url: import.meta.env.VITE_IMAGE_DOMAIN + data.image,
+              url: data.image,
               name: data.image.split("/").at(-1),
             },
           ]);

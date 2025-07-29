@@ -38,7 +38,7 @@ const AboutBannerCard: React.FC = () => {
     formState: { errors },
     reset,
     setError,
-    watch
+    watch,
   } = useForm<aboutFormSchemaType>({
     resolver: zodResolver(aboutFormSchema),
     defaultValues: {
@@ -74,7 +74,7 @@ const AboutBannerCard: React.FC = () => {
     setIsDeleting(true);
     const formData = new FormData();
     formData.append("mediaFile", data.mediaFile);
-    formData.append("type", data.type)
+    formData.append("type", data.type);
     addAboutUS(formData)
       .then((res) => {
         const toast2 = res.success ? toast.success : toast.error;
@@ -141,9 +141,7 @@ const AboutBannerCard: React.FC = () => {
                   <div className="logo-section">
                     <div className="logo-container blinkit-logo">
                       <ReactPlayer
-                        url={
-                          import.meta.env.VITE_IMAGE_DOMAIN + banner.mediaFile
-                        }
+                        url={banner.mediaFile}
                         muted
                         loop
                         controls={true}
@@ -167,11 +165,7 @@ const AboutBannerCard: React.FC = () => {
                 <Card.Body className="d-flex justify-content-center">
                   <div className="logo-section">
                     <div className="logo-container blinkit-logo">
-                      <img
-                        src={
-                          import.meta.env.VITE_IMAGE_DOMAIN + banner.mediaFile
-                        }
-                      />
+                      <img src={banner.mediaFile} />
                     </div>
                   </div>
 

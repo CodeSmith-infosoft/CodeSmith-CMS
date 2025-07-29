@@ -156,9 +156,7 @@ const SuccessStoryCard: React.FC = () => {
                 <Card.Body className="d-flex justify-content-center">
                   <div className="logo-section">
                     <div className="logo-container blinkit-logo">
-                      <img
-                        src={import.meta.env.VITE_IMAGE_DOMAIN + banner.image}
-                      />
+                      <img src={banner.image} />
                     </div>
                   </div>
 
@@ -189,9 +187,7 @@ const SuccessStoryCard: React.FC = () => {
                 <Card.Body className="d-flex justify-content-center">
                   <div className="logo-section">
                     <div className="logo-container blinkit-logo">
-                      <img
-                        src={import.meta.env.VITE_IMAGE_DOMAIN + banner.image}
-                      />
+                      <img src={banner.image} />
                     </div>
                   </div>
 

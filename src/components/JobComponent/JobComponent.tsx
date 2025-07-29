@@ -304,12 +304,10 @@ function MyVerticallyCenteredModal(props: MyVerticallyCenteredModalProps) {
       <Modal.Body>
         {selectedData ? (
           <>
-            <MyViewer
-              url={import.meta.env.VITE_IMAGE_DOMAIN + selectedData.attach}
-            />
+            <MyViewer url={selectedData.attach} />
           </>
         ) : (
-          // <Document file={import.meta.env.VITE_IMAGE_DOMAIN + selectedData.attach}>
+          // <Document file={ selectedData.attach}>
           //   <Page pageNumber={1} />
           // </Document>
           <p>No data available</p>

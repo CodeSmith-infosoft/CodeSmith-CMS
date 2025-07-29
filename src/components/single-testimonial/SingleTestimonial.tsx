@@ -47,7 +47,7 @@ const SingleTestimonial = () => {
       name: "",
       description: "",
       rating: "",
-      image: ""
+      image: "",
     },
   });
 
@@ -58,11 +58,11 @@ const SingleTestimonial = () => {
           const data = res.data;
           setValue("name", data.name);
           setValue("description", data.description);
-          setValue("image", import.meta.env.VITE_IMAGE_DOMAIN + data.image);
+          setValue("image", data.image);
           setValue("rating", data.rating);
           setFileList([
             {
-              url: import.meta.env.VITE_IMAGE_DOMAIN + data.image,
+              url: data.image,
               name: data.image.split("/").at(-1),
             },
           ]);
@@ -196,8 +196,7 @@ const SingleTestimonial = () => {
                       render={({ field }) => (
                         <Dropdown>
                           <DropdownToggle>
-                            {field.value || "Select Rating"}{" "}
-                            <FaCaretDown />
+                            {field.value || "Select Rating"} <FaCaretDown />
                           </DropdownToggle>
                           <DropdownMenu>
                             <DropdownItem

@@ -139,50 +139,41 @@ const SingleCaseStudy = () => {
           const data = res.data;
           setValue("challenges", data.challenges);
           setValue("description", data.description);
-          setValue(
-            "companyLogo",
-            import.meta.env.VITE_IMAGE_DOMAIN + data.companyLogo
-          );
+          setValue("companyLogo", data.companyLogo);
           setValue("conclusion", data.conclusion);
           setValue("devProcess", data.devProcess);
           setValue("duration", data.duration);
           setValue("industry", data.industry);
-          setValue(
-            "mainImage",
-            import.meta.env.VITE_IMAGE_DOMAIN + data.mainImage
-          );
+          setValue("mainImage", data.mainImage);
           setValue("platform", data.platform);
           setValue("problem", data.problem);
           setValue("projectName", data.projectName);
           setValue("solution", data.solution);
-          setValue("color", import.meta.env.VITE_IMAGE_DOMAIN + data.color);
+          setValue("color", data.color);
           setValue("tech", data.tech);
-          setValue(
-            "typography",
-            import.meta.env.VITE_IMAGE_DOMAIN + data.typography
-          );
+          setValue("typography", data.typography);
           setFileList({
             logo: [
               {
-                url: import.meta.env.VITE_IMAGE_DOMAIN + data.companyLogo,
+                url: data.companyLogo,
                 name: data.companyLogo.split("/").at(-1),
               },
             ],
             main: [
               {
-                url: import.meta.env.VITE_IMAGE_DOMAIN + data.mainImage,
+                url: data.mainImage,
                 name: data.mainImage.split("/").at(-1),
               },
             ],
             color: [
               {
-                url: import.meta.env.VITE_IMAGE_DOMAIN + data.color,
+                url: data.color,
                 name: data.color.split("/").at(-1),
               },
             ],
             typography: [
               {
-                url: import.meta.env.VITE_IMAGE_DOMAIN + data.typography,
+                url: data.typography,
                 name: data.typography.split("/").at(-1),
               },
             ],

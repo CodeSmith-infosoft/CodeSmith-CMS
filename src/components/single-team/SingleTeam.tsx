@@ -51,14 +51,14 @@ const SingleTeam = () => {
           const data = res.data;
           setValue("name", data.name);
           setValue("position", data.position);
-          setValue("photo", import.meta.env.VITE_IMAGE_DOMAIN + data.photo);
+          setValue("photo", data.photo);
           setValue("linkedin", data.linkedin);
           setValue("instagram", data.instagram);
           setValue("facebook", data.facebook);
           setValue("twitter", data.twitter);
           setFileList([
             {
-              url: import.meta.env.VITE_IMAGE_DOMAIN + data.photo,
+              url: data.photo,
               name: data.photo.split("/").at(-1),
             },
           ]);

@@ -51,10 +51,7 @@ const CaseStudyComponent = ({ setTotalCount }: ProductPropType) => {
             onClick={() => handleEdit(data._id)}
           >
             <div className="product">
-              <img
-                src={import.meta.env.VITE_IMAGE_DOMAIN + value}
-                alt="avatar"
-              />
+              <img src={value} alt="avatar" />
             </div>
           </div>
         </>
@@ -149,7 +146,7 @@ const CaseStudyComponent = ({ setTotalCount }: ProductPropType) => {
       deleteCaseStudy(productToDelete._id).then((res) => {
         const toast2 = res.success ? toast.success : toast.error;
         toast2(res.message);
-        getCaseStudyData()
+        getCaseStudyData();
       });
     } catch (error) {
       console.error("Error deleting product:", error);
