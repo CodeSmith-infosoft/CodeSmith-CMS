@@ -91,6 +91,7 @@ const AddEnterprise = ({
                 action=""
                 accept="image/*"
                 fileList={fileList}
+                draggable
               >
                 <div className="upload-trigger">
                   <Button

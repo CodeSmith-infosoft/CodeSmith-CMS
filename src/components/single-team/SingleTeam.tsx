@@ -157,6 +157,7 @@ const SingleTeam = () => {
                         onChange={(fileList) =>
                           handleFeildChange(fileList, field)
                         }
+                        draggable
                       >
                         <div className="upload-button">
                           <div className="img-logo">

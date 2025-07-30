@@ -177,7 +177,7 @@ const EnterpriseCard: React.FC = () => {
         show={showDeleteModal}
         onHide={handleDeleteCancel}
         onConfirm={handleDeleteConfirm}
-        title="Delete Home Banner"
+        title="Delete Enterprise Banner"
         message={
           <>
             Are you sure you want to delete this <b>Enterprise Logo</b>? This

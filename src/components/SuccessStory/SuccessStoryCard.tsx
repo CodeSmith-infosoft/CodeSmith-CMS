@@ -228,10 +228,10 @@ const SuccessStoryCard: React.FC = () => {
         show={showDeleteModal}
         onHide={handleDeleteCancel}
         onConfirm={handleDeleteConfirm}
-        title="Delete Home Banner"
+        title="Delete Success Story"
         message={
           <>
-            Are you sure you want to delete this <b>Home Banner</b>? This action
+            Are you sure you want to delete this <b>Success Story</b>? This action
             cannot be undone.
           </>
         }

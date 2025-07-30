@@ -432,6 +432,7 @@ const SingleCaseStudy = () => {
                         onChange={(fileList) =>
                           handleFeildChange(fileList, field, "logo")
                         }
+                        draggable
                       >
                         <div className="upload-button">
                           <div className="img-logo">
@@ -467,6 +468,7 @@ const SingleCaseStudy = () => {
                         onChange={(fileList) =>
                           handleFeildChange(fileList, field, "main")
                         }
+                        draggable
                       >
                         <div className="upload-button">
                           <div className="img-logo">
@@ -506,6 +508,7 @@ const SingleCaseStudy = () => {
                         onChange={(fileList) =>
                           handleFeildChange(fileList, field, "color")
                         }
+                        draggable
                       >
                         <div className="upload-button">
                           <div className="img-logo">
@@ -541,6 +544,7 @@ const SingleCaseStudy = () => {
                         onChange={(fileList) =>
                           handleFeildChange(fileList, field, "typography")
                         }
+                        draggable
                       >
                         <div className="upload-button">
                           <div className="img-logo">

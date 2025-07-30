@@ -220,10 +220,10 @@ const TechstachData: React.FC = () => {
         show={showDeleteModal}
         onHide={handleDeleteCancel}
         onConfirm={handleDeleteConfirm}
-        title="Delete Home Banner"
+        title="Delete TechStach"
         message={
           <>
-            Are you sure you want to delete this <b>Home Banner</b>? This action
+            Are you sure you want to delete this <b>TechStach</b>? This action
             cannot be undone.
           </>
         }

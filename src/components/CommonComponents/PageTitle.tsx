@@ -126,7 +126,7 @@ const PageTitle = ({
         show={showDeleteModal}
         onHide={handleDeleteCancel}
         onConfirm={handleDeleteConfirm}
-        title="Delete Home Banner"
+        title="Cancel Action"
         message={
           <>
             Are you sure you want to cancel this form? This action cannot be

@@ -238,6 +238,7 @@ const SinglePortfolio = () => {
                         onChange={(fileList) =>
                           handleFeildChange(fileList, field, "image")
                         }
+                        draggable
                       >
                         <div className="upload-button">
                           <div className="img-logo">
@@ -276,6 +277,7 @@ const SinglePortfolio = () => {
                         onChange={(fileList) =>
                           handleFeildChange(fileList, field, "banner")
                         }
+                        draggable
                       >
                         <div className="upload-button">
                           <div className="img-logo">

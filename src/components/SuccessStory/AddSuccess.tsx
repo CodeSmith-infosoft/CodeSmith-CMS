@@ -122,6 +122,7 @@ const AddSuccess = ({
                 action=""
                 accept="image/*"
                 fileList={fileList}
+                draggable
               >
                 <div className="upload-trigger">
                   <Button

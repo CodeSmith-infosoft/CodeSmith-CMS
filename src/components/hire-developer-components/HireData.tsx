@@ -266,10 +266,10 @@ const HireData: React.FC = () => {
         show={showDeleteModal}
         onHide={handleDeleteCancel}
         onConfirm={handleDeleteConfirm}
-        title="Delete Home Banner"
+        title="Delete Hire Banner"
         message={
           <>
-            Are you sure you want to delete this <b>Home Banner</b>? This action
+            Are you sure you want to delete this <b>Hire Banner</b>? This action
             cannot be undone.
           </>
         }

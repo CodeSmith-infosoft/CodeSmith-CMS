@@ -63,7 +63,7 @@ const AddAboutBanner = ({
       centered
     >
       <Modal.Body>
-        <h2>{item?._id ? "Update" : "Add"} Home Banner</h2>
+        <h2>{item?._id ? "Update" : "Add"} About Banner</h2>
 
         <p>Upload Type</p>
         <div className="img-upload rsuite-image-upload-field">
@@ -113,6 +113,7 @@ const AddAboutBanner = ({
                 action=""
                 accept={watch("type") === "video" ? "video/*" : "image/*"}
                 fileList={fileList}
+                draggable
               >
                 <div className="upload-trigger">
                   <Button
@@ -141,7 +142,7 @@ const AddAboutBanner = ({
             className="me-0 btn-add"
             onClick={handleSubmit((data) => onSubmit(data, setFileList))}
           >
-            {item?._id ? "Update" : "Add"} Home Banner
+            {item?._id ? "Update" : "Add"} About Banner
           </button>
         </div>
       </Modal.Body>
