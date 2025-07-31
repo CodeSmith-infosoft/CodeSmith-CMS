@@ -17,7 +17,7 @@ import { Uploader } from "rsuite";
 import "rsuite/dist/rsuite.css";
 import ErrorMessage from "../ErrorMessage";
 import PageTitle from "../CommonComponents/PageTitle";
-import { getImageAsBlob, toBase64 } from "@/utils/helper";
+import { toBase64 } from "@/utils/helper";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import addPortfolioSchema, {
@@ -125,18 +125,8 @@ const SinglePortfolio = () => {
     data.features.forEach((item, index) => {
       formData.append(`features[${index}]`, item);
     });
-    if (id && !(data.image instanceof File)) {
-      const blob = await getImageAsBlob(data.image);
-      formData.append(`image`, blob);
-    } else {
-      formData.append(`image`, data.image);
-    }
-    if (id && !(data.banner instanceof File)) {
-      const blob = await getImageAsBlob(data.banner);
-      formData.append(`banner`, blob);
-    } else {
-      formData.append(`banner`, data.banner);
-    }
+    formData.append(`image`, data.image);
+    formData.append(`banner`, data.banner);
 
     const action = () =>
       id ? updatePortfolio(formData, id) : addPortfolio(formData);

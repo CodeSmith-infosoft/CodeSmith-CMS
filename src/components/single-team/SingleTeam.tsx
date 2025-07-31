@@ -7,7 +7,7 @@ import { Uploader } from "rsuite";
 import "rsuite/dist/rsuite.css";
 import ErrorMessage from "../ErrorMessage";
 import PageTitle from "../CommonComponents/PageTitle";
-import { getImageAsBlob, toBase64 } from "@/utils/helper";
+import { toBase64 } from "@/utils/helper";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -89,12 +89,7 @@ const SingleTeam = () => {
     formData.append("instagram", data.instagram || "");
     formData.append("facebook", data.facebook || "");
     formData.append("twitter", data.twitter || "");
-    if (id && !(data.photo instanceof File)) {
-      const blob = await getImageAsBlob(data.photo);
-      formData.append(`photo`, blob);
-    } else {
-      formData.append(`photo`, data.photo);
-    }
+    formData.append(`photo`, data.photo);
 
     const action = () => (id ? updateTeam(formData, id) : addTeam(formData));
     action().then((res) => {

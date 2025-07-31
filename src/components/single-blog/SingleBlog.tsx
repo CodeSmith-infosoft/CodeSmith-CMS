@@ -18,7 +18,7 @@ import "rsuite/dist/rsuite.css";
 import { SingleBlogFormData } from "@/service/form-schema/blog.schema";
 import ErrorMessage from "../ErrorMessage";
 import PageTitle from "../CommonComponents/PageTitle";
-import { getImageAsBlob, toBase64 } from "@/utils/helper";
+import { toBase64 } from "@/utils/helper";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllTechStack } from "@/service/asyncStore/action/techStack";
@@ -102,12 +102,7 @@ const SingleBlog = () => {
     formData.append("techStackId", data.techStackId);
     formData.append("details", data.details);
     formData.append("createdBy", data.createdBy);
-    if (id && !(data.image instanceof File)) {
-      const blob = await getImageAsBlob(data.image);
-      formData.append(`image`, blob);
-    } else {
-      formData.append(`image`, data.image);
-    }
+    formData.append(`image`, data.image);
 
     const action = () => (id ? updateBlog(formData, id) : addBlog(formData));
     action().then((res) => {

@@ -8,7 +8,7 @@ import { Uploader } from "rsuite";
 import "rsuite/dist/rsuite.css";
 import ErrorMessage from "../ErrorMessage";
 import PageTitle from "../CommonComponents/PageTitle";
-import { getImageAsBlob, toBase64 } from "@/utils/helper";
+import { toBase64 } from "@/utils/helper";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import addCaseStudySchema, {
@@ -209,30 +209,10 @@ const SingleCaseStudy = () => {
       formData.append(`solution[${index}][h]`, variant.h);
       formData.append(`solution[${index}][p]`, variant.p);
     });
-    if (id && !(data.companyLogo instanceof File)) {
-      const blob = await getImageAsBlob(data.companyLogo);
-      formData.append(`companyLogo`, blob);
-    } else {
-      formData.append(`companyLogo`, data.companyLogo);
-    }
-    if (id && !(data.mainImage instanceof File)) {
-      const blob = await getImageAsBlob(data.mainImage);
-      formData.append(`mainImage`, blob);
-    } else {
-      formData.append(`mainImage`, data.mainImage);
-    }
-    if (id && !(data.color instanceof File)) {
-      const blob = await getImageAsBlob(data.color);
-      formData.append(`color`, blob);
-    } else {
-      formData.append(`color`, data.color);
-    }
-    if (id && !(data.typography instanceof File)) {
-      const blob = await getImageAsBlob(data.typography);
-      formData.append(`typography`, blob);
-    } else {
-      formData.append(`typography`, data.typography);
-    }
+    formData.append(`companyLogo`, data.companyLogo);
+    formData.append(`mainImage`, data.mainImage);
+    formData.append(`color`, data.color);
+    formData.append(`typography`, data.typography);
 
     const action = () =>
       id ? updateCaseStudy(formData, id) : addCaseStudy(formData);
